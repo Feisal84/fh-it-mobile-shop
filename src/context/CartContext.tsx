@@ -3,12 +3,66 @@
 import {
   createContext,
   useContext,
-  useEffect,
-  useState,
-  ReactNode,
+  useSyncExternalStore,
+  type ReactNode,
 } from "react";
 
-import { CartItem, Product } from "../types/shop";
+import type { Product } from "../types/product";
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+const CART_STORAGE_KEY = "fh-cart";
+const EMPTY_CART: CartItem[] = [];
+let cachedCart = EMPTY_CART;
+let cachedCartValue: string | null = null;
+
+function getStoredCart(): CartItem[] {
+  if (typeof window === "undefined") {
+    return EMPTY_CART;
+  }
+
+  const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+
+  if (storedCart === cachedCartValue) {
+    return cachedCart;
+  }
+
+  cachedCartValue = storedCart;
+
+  try {
+    const parsedCart: unknown = storedCart ? JSON.parse(storedCart) : EMPTY_CART;
+    cachedCart = Array.isArray(parsedCart) ? parsedCart : EMPTY_CART;
+  } catch (error) {
+    console.error("Warenkorb konnte nicht geladen werden:", error);
+    cachedCart = EMPTY_CART;
+  }
+
+  return cachedCart;
+}
+
+function subscribeToCart(callback: () => void) {
+  const handleStorageChange = () => callback();
+
+  window.addEventListener("storage", handleStorageChange);
+  window.addEventListener("fh-cart-change", handleStorageChange);
+
+  return () => {
+    window.removeEventListener("storage", handleStorageChange);
+    window.removeEventListener("fh-cart-change", handleStorageChange);
+  };
+}
+
+function saveCart(items: CartItem[]) {
+  const serializedCart = JSON.stringify(items);
+
+  cachedCart = items;
+  cachedCartValue = serializedCart;
+  localStorage.setItem(CART_STORAGE_KEY, serializedCart);
+  window.dispatchEvent(new Event("fh-cart-change"));
+}
 
 type CartContextType = {
   items: CartItem[];
@@ -25,53 +79,36 @@ const CartContext = createContext<CartContextType | undefined>(
 );
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
-
-  useEffect(() => {
-    const savedCart = localStorage.getItem("fh-cart");
-
-    if (savedCart) {
-      setItems(JSON.parse(savedCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("fh-cart", JSON.stringify(items));
-  }, [items]);
+  const items = useSyncExternalStore(
+    subscribeToCart,
+    getStoredCart,
+    () => EMPTY_CART
+  );
 
   function addToCart(product: Product) {
-    setItems((currentItems) => {
-      const existingItem = currentItems.find(
-        (item) => item.product.id === product.id
-      );
+    const existingItem = items.find(
+      (item) => item.product.id === product.id
+    );
 
-      if (existingItem) {
-        return currentItems.map((item) =>
+    if (existingItem) {
+      saveCart(
+        items.map((item) =>
           item.product.id === product.id
             ? {
                 ...item,
-                quantity: item.quantity + 1,
+                quantity: Math.min(item.quantity + 1, product.stock),
               }
             : item
-        );
-      }
+        )
+      );
+      return;
+    }
 
-      return [
-        ...currentItems,
-        {
-          product,
-          quantity: 1,
-        },
-      ];
-    });
+    saveCart([...items, { product, quantity: 1 }]);
   }
 
   function removeFromCart(productId: string) {
-    setItems((currentItems) =>
-      currentItems.filter(
-        (item) => item.product.id !== productId
-      )
-    );
+    saveCart(items.filter((item) => item.product.id !== productId));
   }
 
   function updateQuantity(productId: string, quantity: number) {
@@ -80,12 +117,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    setItems((currentItems) =>
-      currentItems.map((item) =>
+    saveCart(
+      items.map((item) =>
         item.product.id === productId
           ? {
               ...item,
-              quantity,
+              quantity: Math.min(quantity, item.product.stock),
             }
           : item
       )
@@ -93,7 +130,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }
 
   function clearCart() {
-    setItems([]);
+    saveCart([]);
   }
 
   const totalItems = items.reduce(

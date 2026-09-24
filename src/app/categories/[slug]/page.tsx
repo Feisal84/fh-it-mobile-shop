@@ -1,8 +1,34 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { categories } from "../../../data/categories";
 import { getProductsByCategory } from "../../../data/products";
 import ProductGrid from "../../../components/products/ProductGrid";
+
+export function generateStaticParams() {
+  return categories.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const category = categories.find((item) => item.slug === slug);
+
+  if (!category) {
+    return {};
+  }
+
+  return {
+    title: category.name,
+    description: category.description,
+    alternates: {
+      canonical: `/categories/${category.slug}`,
+    },
+  };
+}
 
 export default async function CategoryPage({
   params,

@@ -1,214 +1,285 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
-  Facebook,
-  Instagram,
+  Camera,
   Mail,
   MapPin,
   Phone,
-  Share2,
+  ThumbsUp,
 } from "lucide-react";
+
+const shopLinks = [
+  {
+    label: "Shop",
+    href: "/shop",
+  },
+  {
+    label: "Smartphones",
+    href: "/categories/smartphones",
+  },
+  {
+    label: "IT & Computer",
+    href: "/categories/it-computer",
+  },
+  {
+    label: "Elektronik",
+    href: "/categories/elektronik",
+  },
+  {
+    label: "Handy-Zubehör",
+    href: "/categories/handy-zubehoer",
+  },
+  {
+    label: "Bekleidung",
+    href: "/categories/bekleidung",
+  },
+  {
+    label: "Refurbished",
+    href: "/categories/refurbished",
+  },
+];
+
+const serviceLinks = [
+  {
+    label: "Über uns",
+    href: "/about",
+  },
+  {
+    label: "Kontakt",
+    href: "/contact",
+  },
+  {
+    label: "Versand & Lieferung",
+    href: "/shipping",
+  },
+  {
+    label: "FAQ",
+    href: "/faq",
+  },
+  {
+    label: "Rückgabe",
+    href: "/returns",
+  },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0b1220] text-gray-300">
-
-      <div className="container-shop py-16">
-
+    <footer className="mt-20 bg-[#0B1220] text-white">
+      {/* MAIN FOOTER */}
+      <div className="container-shop py-14">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-
-          {/* Brand */}
+          {/* BRAND */}
           <div>
-
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 font-black text-white">
-                FH
+            <Link
+              href="/"
+              className="mb-5 inline-flex items-center"
+              aria-label="FH IT & Mobile Handel"
+            >
+              <div className="rounded-xl bg-white px-4 py-3">
+                <Image
+                  src="/logo.svg"
+                  alt="FH IT & Mobile Handel"
+                  width={250}
+                  height={67}
+                  className="h-auto w-[210px]"
+                />
               </div>
+            </Link>
 
-              <div>
-                <div className="font-black text-white">
-                  FH IT & Mobile
-                </div>
-
-                <div className="text-[10px] uppercase tracking-wider text-gray-500">
-                  Handel & Bekleidung
-                </div>
-              </div>
-            </div>
-
-            <p className="mt-5 max-w-xs text-sm leading-6 text-gray-400">
-              Ihr Online-Shop für Smartphones, IT,
-              Elektronik, Zubehör und Bekleidung.
+            <p className="max-w-sm text-sm leading-6 text-slate-300">
+              Technik, Mobile, IT, Elektronik und Bekleidung –
+              zuverlässig, modern und zu fairen Preisen.
             </p>
 
-            <div className="mt-5 flex gap-2">
-              <button className="rounded-lg bg-white/5 p-2.5 hover:bg-white/10">
-                <Share2 size={18} />
-              </button>
-            </div>
+            <p className="mt-4 text-sm text-slate-400">
+              Inhaber:{" "}
+              <span className="font-medium text-slate-200">
+                Feisal Ibrahim Hussein
+              </span>
+            </p>
 
+            {/* SOCIAL MEDIA */}
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 text-slate-300 transition hover:border-blue-500 hover:bg-blue-600 hover:text-white"
+              >
+                <Camera className="h-5 w-5" />
+              </a>
+
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 text-slate-300 transition hover:border-blue-500 hover:bg-blue-600 hover:text-white"
+              >
+                <ThumbsUp className="h-5 w-5" />
+              </a>
+            </div>
           </div>
 
-          {/* Shop */}
+          {/* SHOP */}
           <div>
-
-            <h3 className="font-bold text-white">
+            <h3 className="mb-5 text-base font-bold text-white">
               Shop
             </h3>
 
-            <div className="mt-5 flex flex-col gap-3 text-sm">
-
-              <Link
-                href="/shop"
-                className="hover:text-white"
-              >
-                Alle Produkte
-              </Link>
-
-              <Link
-                href="/categories/smartphones"
-                className="hover:text-white"
-              >
-                Smartphones
-              </Link>
-
-              <Link
-                href="/categories/it-computer"
-                className="hover:text-white"
-              >
-                IT & Computer
-              </Link>
-
-              <Link
-                href="/categories/elektronik"
-                className="hover:text-white"
-              >
-                Elektronik
-              </Link>
-
-              <Link
-                href="/categories/bekleidung"
-                className="hover:text-white"
-              >
-                Bekleidung
-              </Link>
-
-              <Link
-                href="/categories/refurbished"
-                className="text-green-400 hover:text-green-300"
-              >
-                Refurbished
-              </Link>
-
-            </div>
+            <ul className="space-y-3">
+              {shopLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-300 transition hover:text-blue-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Service */}
+          {/* SERVICE */}
           <div>
-
-            <h3 className="font-bold text-white">
+            <h3 className="mb-5 text-base font-bold text-white">
               Service
             </h3>
 
-            <div className="mt-5 flex flex-col gap-3 text-sm">
+            <ul className="space-y-3">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-300 transition hover:text-blue-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
 
-              <Link
-                href="/about"
-                className="hover:text-white"
-              >
-                Über uns
-              </Link>
+              <li>
+                <Link
+                  href="/impressum"
+                  className="text-sm text-slate-300 transition hover:text-blue-400"
+                >
+                  Impressum
+                </Link>
+              </li>
 
-              <Link
-                href="/contact"
-                className="hover:text-white"
-              >
-                Kontakt
-              </Link>
-
-              <Link
-                href="/shipping"
-                className="hover:text-white"
-              >
-                Versand & Rückgabe
-              </Link>
-
-              <Link
-                href="/faq"
-                className="hover:text-white"
-              >
-                FAQ
-              </Link>
-
-            </div>
+              <li>
+                <Link
+                  href="/datenschutz"
+                  className="text-sm text-slate-300 transition hover:text-blue-400"
+                >
+                  Datenschutz
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Contact */}
+          {/* CONTACT */}
           <div>
-
-            <h3 className="font-bold text-white">
+            <h3 className="mb-5 text-base font-bold text-white">
               Kontakt
             </h3>
 
-            <div className="mt-5 space-y-4 text-sm">
+            <div className="space-y-4">
+              {/* ADDRESS */}
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
 
-              <div className="flex gap-3">
-                <MapPin
-                  size={18}
-                  className="mt-0.5 shrink-0 text-blue-400"
-                />
+                <div className="text-sm leading-6 text-slate-300">
+                  <p className="font-medium text-white">
+                    FH IT & Mobile Handel
+                  </p>
 
-                <span>
-                  Deutschland
-                </span>
+                  <p>Siebenbürger Str. 21</p>
+                  <p>33609 Bielefeld</p>
+                  <p>Deutschland</p>
+                </div>
               </div>
 
-              <div className="flex gap-3">
-                <Mail
-                  size={18}
-                  className="mt-0.5 shrink-0 text-blue-400"
-                />
+              {/* PHONE */}
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 shrink-0 text-blue-400" />
 
-                <span>
-                  E-Mail folgt
-                </span>
+                <a
+                  href="tel:+4915730222293"
+                  className="text-sm text-slate-300 transition hover:text-blue-400"
+                >
+                  +49 1573 0222293
+                </a>
               </div>
 
-              <div className="flex gap-3">
-                <Phone
-                  size={18}
-                  className="mt-0.5 shrink-0 text-blue-400"
-                />
+              {/* EMAIL */}
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 shrink-0 text-blue-400" />
 
-                <span>
-                  Telefon folgt
-                </span>
+                <a
+                  href="mailto:info@fhhandle.de"
+                  className="break-all text-sm text-slate-300 transition hover:text-blue-400"
+                >
+                  info@fhhandle.de
+                </a>
               </div>
-
             </div>
 
+            {/* CUSTOMER SERVICE BOX */}
+            <div className="mt-6 rounded-xl border border-slate-700 bg-slate-900/60 p-4">
+              <p className="text-sm font-semibold text-white">
+                Persönlicher Kundenservice
+              </p>
+
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                Bei Fragen zu Produkten, Bestellungen oder
+                Lieferungen kannst du uns gerne kontaktieren.
+              </p>
+            </div>
           </div>
-
         </div>
+      </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-xs text-gray-500 md:flex-row md:items-center md:justify-between">
-
-          <span>
+      {/* BOTTOM BAR */}
+      <div className="border-t border-slate-800">
+        <div className="container-shop flex flex-col gap-3 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>
             © {new Date().getFullYear()} FH IT & Mobile Handel.
             Alle Rechte vorbehalten.
-          </span>
+          </p>
 
-          <div className="flex gap-5">
-            <Link href="/impressum">
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/impressum"
+              className="hover:text-white"
+            >
               Impressum
             </Link>
 
-            <Link href="/datenschutz">
+            <Link
+              href="/datenschutz"
+              className="hover:text-white"
+            >
               Datenschutz
             </Link>
+
+            <Link
+              href="/agb"
+              className="hover:text-white"
+            >
+              AGB
+            </Link>
+
+            <Link
+              href="/widerruf"
+              className="hover:text-white"
+            >
+              Widerruf
+            </Link>
           </div>
-
         </div>
-
       </div>
     </footer>
   );

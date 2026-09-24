@@ -13,7 +13,7 @@ export const categories: Category[] = [
     name: "IT & Computer",
     slug: "it-computer",
     description: "Computer, Laptops und IT-Hardware",
-    image: "/images/categories/computer.jpg",
+    image: "/images/categories/it-computer.jpg",
   },
   {
     id: "3",
@@ -27,7 +27,7 @@ export const categories: Category[] = [
     name: "Handy-Zubehör",
     slug: "handy-zubehoer",
     description: "Ladegeräte, Kabel, Cases und mehr",
-    image: "/images/categories/zubehoer.jpg",
+    image: "/images/categories/handy-zubehoer.jpg",
   },
   {
     id: "5",

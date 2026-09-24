@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import {
   Heart,
   Menu,
@@ -10,234 +11,297 @@ import {
   User,
   X,
 } from "lucide-react";
-import { useState } from "react";
-
 import { useCart } from "../../context/CartContext";
 
+const categories = [
+  {
+    name: "Smartphones",
+    href: "/categories/smartphones",
+  },
+  {
+    name: "IT & Computer",
+    href: "/categories/it-computer",
+  },
+  {
+    name: "Elektronik",
+    href: "/categories/elektronik",
+  },
+  {
+    name: "Handy-Zubehör",
+    href: "/categories/handy-zubehoer",
+  },
+  {
+    name: "Bekleidung",
+    href: "/categories/bekleidung",
+  },
+  {
+    name: "Refurbished",
+    href: "/categories/refurbished",
+  },
+];
+
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
   const { totalItems } = useCart();
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
-
-      {/* Top information bar */}
-      <div className="hidden bg-[#0b1220] text-white md:block">
+      {/* TOP BAR */}
+      <div className="hidden bg-[#0B1220] text-white md:block">
         <div className="container-shop flex h-9 items-center justify-between text-xs">
-          <span>
-            Willkommen bei FH IT & Mobile Handel
-          </span>
+          <p>
+            Willkommen bei <span className="font-semibold">FH IT & Mobile Handel</span>
+          </p>
 
-          <div className="flex gap-6">
-            <span>✓ Sichere Bestellung</span>
-            <span>✓ Schneller Versand</span>
-            <span>✓ Kundenservice</span>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/shipping"
+              className="transition hover:text-blue-400"
+            >
+              Versand & Lieferung
+            </Link>
+
+            <Link
+              href="/contact"
+              className="transition hover:text-blue-400"
+            >
+              Kontakt
+            </Link>
           </div>
         </div>
       </div>
 
-      <div className="container-shop">
+      {/* MAIN HEADER */}
+      <div className="border-b border-slate-100 bg-white">
+        <div className="container-shop">
+          <div className="flex h-[76px] items-center gap-4">
+            {/* MOBILE MENU */}
+            <button
+              type="button"
+              aria-label={
+                mobileMenuOpen ? "Menü schließen" : "Menü öffnen"
+              }
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 md:hidden"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
 
-        {/* Main header */}
-        <div className="flex min-h-[76px] items-center justify-between gap-6">
-
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-3"
-          >
-            <Image
-              src="/logo.svg"
-              alt="FH IT & Mobile - Handel & Bekleidung"
-              width={360}
-              height={72}
-              priority
-              className="h-12 w-auto sm:h-14"
-            />
-          </Link>
-
-          {/* Desktop search */}
-          <div className="hidden max-w-xl flex-1 lg:block">
-            <div className="relative">
-              <Search
-                size={19}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+            {/* LOGO */}
+            <Link
+              href="/"
+              aria-label="FH IT & Mobile Handel Startseite"
+              className="flex shrink-0 items-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Image
+                src="/logo.svg"
+                alt="FH IT & Mobile Handel"
+                width={270}
+                height={72}
+                priority
+                className="h-auto w-[185px] sm:w-[220px] md:w-[250px]"
               />
+            </Link>
 
-              <input
-                type="search"
-                placeholder="Was suchst du heute?"
-                className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-12 pr-4 text-sm outline-none focus:border-blue-500 focus:bg-white"
-              />
+            {/* DESKTOP SEARCH */}
+            <div className="mx-auto hidden w-full max-w-xl lg:block">
+              <form
+                action="/shop"
+                method="GET"
+                className="relative"
+              >
+                <input
+                  type="search"
+                  name="search"
+                  placeholder="Was suchst du?"
+                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-4 pr-12 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
+                />
+
+                <button
+                  type="submit"
+                  aria-label="Suchen"
+                  className="absolute right-0 top-0 flex h-11 w-12 items-center justify-center rounded-r-xl text-slate-500 hover:text-blue-600"
+                >
+                  <Search className="h-5 w-5" />
+                </button>
+              </form>
+            </div>
+
+            {/* ACTIONS */}
+            <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
+              {/* MOBILE SEARCH */}
+              <button
+                type="button"
+                aria-label="Suche öffnen"
+                onClick={() => setSearchOpen(!searchOpen)}
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 lg:hidden"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+
+              {/* ACCOUNT */}
+              <Link
+                href="/account"
+                aria-label="Mein Konto"
+                className="hidden h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 sm:flex"
+              >
+                <User className="h-5 w-5" />
+              </Link>
+
+              {/* FAVORITES */}
+              <Link
+                href="/favorites"
+                aria-label="Favoriten"
+                className="hidden h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 sm:flex"
+              >
+                <Heart className="h-5 w-5" />
+              </Link>
+
+              {/* CART */}
+              <Link
+                href="/cart"
+                aria-label={`Warenkorb, ${totalItems} Artikel`}
+                className="relative flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100"
+              >
+                <ShoppingCart className="h-5 w-5" />
+
+                {totalItems > 0 && (
+                  <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-bold text-white">
+                    {totalItems > 99 ? "99+" : totalItems}
+                  </span>
+                )}
+              </Link>
             </div>
           </div>
 
-          {/* Actions */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          {/* MOBILE SEARCH FIELD */}
+          {searchOpen && (
+            <div className="pb-4 lg:hidden">
+              <form
+                action="/shop"
+                method="GET"
+                className="relative"
+              >
+                <input
+                  type="search"
+                  name="search"
+                  autoFocus
+                  placeholder="Produkte suchen..."
+                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-4 pr-12 text-sm outline-none focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
+                />
 
-            <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="rounded-xl p-2.5 hover:bg-gray-100 lg:hidden"
-              aria-label="Suche öffnen"
+                <button
+                  type="submit"
+                  aria-label="Suchen"
+                  className="absolute right-0 top-0 flex h-11 w-12 items-center justify-center text-slate-500"
+                >
+                  <Search className="h-5 w-5" />
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* DESKTOP NAVIGATION */}
+      <nav className="hidden border-b border-slate-100 bg-white md:block">
+        <div className="container-shop">
+          <div className="flex h-12 items-center justify-center gap-7">
+            <Link
+              href="/shop"
+              className="text-sm font-semibold text-slate-900 hover:text-blue-600"
             >
-              <Search size={21} />
-            </button>
+              Shop
+            </Link>
+
+            {categories.map((category) => (
+              <Link
+                key={category.href}
+                href={category.href}
+                className="text-sm font-medium text-slate-600 hover:text-blue-600"
+              >
+                {category.name}
+              </Link>
+            ))}
 
             <Link
               href="/about"
-              className="hidden rounded-xl p-2.5 hover:bg-gray-100 sm:block"
-              aria-label="Konto"
+              className="text-sm font-medium text-slate-600 hover:text-blue-600"
             >
-              <User size={21} />
+              Über uns
             </Link>
-
-            <button
-              className="hidden rounded-xl p-2.5 hover:bg-gray-100 sm:block"
-              aria-label="Favoriten"
-            >
-              <Heart size={21} />
-            </button>
-
-            <Link
-              href="/cart"
-              className="relative rounded-xl p-2.5 hover:bg-gray-100"
-              aria-label="Warenkorb"
-            >
-              <ShoppingCart size={22} />
-
-              {totalItems > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-bold text-white">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="rounded-xl p-2.5 hover:bg-gray-100 lg:hidden"
-              aria-label="Menü"
-            >
-              {menuOpen ? (
-                <X size={23} />
-              ) : (
-                <Menu size={23} />
-              )}
-            </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile search */}
-        {searchOpen && (
-          <div className="pb-4 lg:hidden">
-            <div className="relative">
-              <Search
-                size={19}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-              />
+      {/* MOBILE MENU */}
+      {mobileMenuOpen && (
+        <div className="border-b border-slate-200 bg-white md:hidden">
+          <div className="container-shop py-4">
+            <nav className="flex flex-col">
+              <Link
+                href="/shop"
+                onClick={() => setMobileMenuOpen(false)}
+                className="border-b border-slate-100 py-3 text-base font-semibold text-slate-900"
+              >
+                Shop
+              </Link>
 
-              <input
-                autoFocus
-                type="search"
-                placeholder="Produkte suchen..."
-                className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-12 pr-4 outline-none focus:border-blue-500"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Desktop navigation */}
-        <nav className="hidden h-12 items-center gap-8 border-t lg:flex">
-
-          <Link
-            href="/"
-            className="text-sm font-semibold text-gray-900 hover:text-blue-600"
-          >
-            Startseite
-          </Link>
-
-          <Link
-            href="/shop"
-            className="text-sm font-semibold text-gray-900 hover:text-blue-600"
-          >
-            Shop
-          </Link>
-
-          <Link
-            href="/categories/smartphones"
-            className="text-sm text-gray-600 hover:text-blue-600"
-          >
-            Smartphones
-          </Link>
-
-          <Link
-            href="/categories/it-computer"
-            className="text-sm text-gray-600 hover:text-blue-600"
-          >
-            IT & Computer
-          </Link>
-
-          <Link
-            href="/categories/elektronik"
-            className="text-sm text-gray-600 hover:text-blue-600"
-          >
-            Elektronik
-          </Link>
-
-          <Link
-            href="/categories/handy-zubehoer"
-            className="text-sm text-gray-600 hover:text-blue-600"
-          >
-            Zubehör
-          </Link>
-
-          <Link
-            href="/categories/bekleidung"
-            className="text-sm text-gray-600 hover:text-blue-600"
-          >
-            Bekleidung
-          </Link>
-
-          <Link
-            href="/categories/refurbished"
-            className="font-semibold text-green-600 hover:text-green-700"
-          >
-            Refurbished
-          </Link>
-        </nav>
-
-        {/* Mobile navigation */}
-        {menuOpen && (
-          <nav className="border-t py-5 lg:hidden">
-            <div className="flex flex-col gap-1">
-
-              {[
-                ["Startseite", "/"],
-                ["Shop", "/shop"],
-                ["Smartphones", "/categories/smartphones"],
-                ["IT & Computer", "/categories/it-computer"],
-                ["Elektronik", "/categories/elektronik"],
-                ["Handy-Zubehör", "/categories/handy-zubehoer"],
-                ["Bekleidung", "/categories/bekleidung"],
-                ["Refurbished", "/categories/refurbished"],
-                ["Über uns", "/about"],
-                ["Kontakt", "/contact"],
-              ].map(([label, href]) => (
+              {categories.map((category) => (
                 <Link
-                  key={href}
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-50"
+                  key={category.href}
+                  href={category.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="border-b border-slate-100 py-3 text-base font-medium text-slate-700 hover:text-blue-600"
                 >
-                  {label}
+                  {category.name}
                 </Link>
               ))}
 
-            </div>
-          </nav>
-        )}
-      </div>
+              <Link
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="border-b border-slate-100 py-3 text-base font-medium text-slate-700"
+              >
+                Über uns
+              </Link>
+
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="border-b border-slate-100 py-3 text-base font-medium text-slate-700"
+              >
+                Kontakt
+              </Link>
+
+              <Link
+                href="/account"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 py-3 text-base font-medium text-slate-700"
+              >
+                <User className="h-5 w-5" />
+                Mein Konto
+              </Link>
+
+              <Link
+                href="/favorites"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 py-3 text-base font-medium text-slate-700"
+              >
+                <Heart className="h-5 w-5" />
+                Favoriten
+              </Link>
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

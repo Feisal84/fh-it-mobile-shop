@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ProductGrid } from "./ProductGrid";
+import ProductGrid from "./ProductGrid";
 import type { Product } from "@/src/types/shop";
 
 export function ProductSearch({ products }: { products: Product[] }) {

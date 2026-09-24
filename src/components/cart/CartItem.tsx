@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { Minus, Plus, Trash2 } from "lucide-react";
 
-import { CartItem as CartItemType } from "../../types/shop";
+import type { CartItem as CartItemType } from "../../context/CartContext";
 import { useCart } from "../../context/CartContext";
 import { formatPrice } from "../../lib/utils";
 
@@ -19,22 +21,17 @@ export default function CartItem({
   return (
     <div className="flex gap-5 border-b py-6">
 
-      <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-5xl">
-        {item.product.categorySlug === "smartphones" && "📱"}
-        {item.product.categorySlug === "it-computer" && "💻"}
-        {item.product.categorySlug === "elektronik" && "🎧"}
-        {item.product.categorySlug === "handy-zubehoer" && "🔌"}
-        {item.product.categorySlug === "bekleidung" && "👕"}
-        {item.product.categorySlug === "refurbished" && "♻️"}
-      </div>
+      <Link href={`/product/${item.product.slug}`} className="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg bg-gray-100">
+        <Image src={item.product.image} alt={item.product.name} fill sizes="112px" className="object-cover" />
+      </Link>
 
       <div className="flex flex-1 flex-col justify-between">
 
         <div className="flex justify-between gap-4">
           <div>
-            <h3 className="font-bold">
+            <Link href={`/product/${item.product.slug}`} className="font-bold hover:text-blue-600">
               {item.product.name}
-            </h3>
+            </Link>
 
             <p className="mt-1 text-sm text-gray-500">
               {formatPrice(item.product.price)}
@@ -42,6 +39,7 @@ export default function CartItem({
           </div>
 
           <button
+            type="button"
             onClick={() =>
               removeFromCart(item.product.id)
             }
@@ -55,6 +53,7 @@ export default function CartItem({
 
           <div className="flex items-center rounded-lg border">
             <button
+              type="button"
               onClick={() =>
                 updateQuantity(
                   item.product.id,
@@ -71,12 +70,14 @@ export default function CartItem({
             </span>
 
             <button
+              type="button"
               onClick={() =>
                 updateQuantity(
                   item.product.id,
                   item.quantity + 1
                 )
               }
+              disabled={item.quantity >= item.product.stock}
               className="p-2 hover:bg-gray-100"
             >
               <Plus size={16} />
