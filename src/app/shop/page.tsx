@@ -1,92 +1,72 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
 
-import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
-
-import { products } from "../../data/products";
 import ProductGrid from "../../components/products/ProductGrid";
+import { getProducts } from "../../lib/products";
 
-export default function ShopPage() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("Alle");
+export const metadata: Metadata = {
+  title: { absolute: "Shop | FH IT & Mobile Handel" },
+  description:
+    "IT, Smartphones, Elektronik, Handy-Zubehör, Refurbished-Produkte und Bekleidung bei FH IT & Mobile Handel.",
+};
 
-  const categories = [
-    "Alle",
-    ...Array.from(
-      new Set(products.map((product) => product.category))
-    ),
-  ];
-
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const matchesSearch =
-        product.name
-          .toLowerCase()
-          .includes(search.toLowerCase()) ||
-        product.description
-          .toLowerCase()
-          .includes(search.toLowerCase());
-
-      const matchesCategory =
-        category === "Alle" ||
-        product.category === category;
-
-      return matchesSearch && matchesCategory;
-    });
-  }, [search, category]);
+export default async function ShopPage() {
+  const products = await getProducts();
 
   return (
-    <div className="container-shop py-12">
+    <div className="min-h-screen bg-slate-50">
+      <section className="border-b border-slate-200 bg-white">
+        <div className="container-shop py-10 md:py-14">
+          <div className="max-w-3xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-600">
+              FH IT &amp; Mobile Handel
+            </p>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900 md:text-5xl">
+              Unser Shop
+            </h1>
+            <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">
+              Entdecke unsere Auswahl an Smartphones, IT-Produkten,
+              Elektronik, Handy-Zubehör, Refurbished-Produkten und
+              Bekleidung.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <div className="mb-10">
-        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
-          FH Shop
-        </p>
-
-        <h1 className="mt-2 text-4xl font-black">
-          Alle Produkte
-        </h1>
-      </div>
-
-      <div className="mb-10 flex flex-col gap-4 md:flex-row">
-
-        <div className="relative flex-1">
-          <Search
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-            size={20}
-          />
-
-          <input
-            type="text"
-            value={search}
-            onChange={(event) =>
-              setSearch(event.target.value)
-            }
-            placeholder="Produkte suchen..."
-            className="w-full rounded-xl border bg-white py-3 pl-12 pr-4 outline-none focus:border-blue-500"
-          />
+      <section className="container-shop py-10 md:py-14">
+        <div className="mb-8 flex items-center justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900">
+              Alle Produkte
+            </h2>
+            <p className="mt-1 text-sm text-slate-500">
+              {products.length} {products.length === 1 ? "Produkt" : "Produkte"}
+            </p>
+          </div>
         </div>
 
-        <select
-          value={category}
-          onChange={(event) =>
-            setCategory(event.target.value)
-          }
-          className="rounded-xl border bg-white px-5 py-3 outline-none focus:border-blue-500"
-        >
-          {categories.map((item) => (
-            <option key={item}>{item}</option>
-          ))}
-        </select>
-
-      </div>
-
-      <p className="mb-6 text-sm text-gray-500">
-        {filteredProducts.length} Produkte
-      </p>
-
-      <ProductGrid products={filteredProducts} />
-
+        {products.length > 0 ? (
+          <ProductGrid products={products} />
+        ) : (
+          <div className="rounded-2xl border border-slate-200 bg-white px-6 py-16 text-center shadow-sm">
+            <div className="mx-auto max-w-md">
+              <h2 className="text-xl font-semibold text-slate-900">
+                Aktuell keine Produkte verfügbar
+              </h2>
+              <p className="mt-3 text-slate-600">
+                Zurzeit sind keine aktiven Produkte in unserem Sortiment
+                vorhanden.
+              </p>
+              <Link
+                href="/"
+                className="mt-6 inline-flex rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
+              >
+                Zur Startseite
+              </Link>
+            </div>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

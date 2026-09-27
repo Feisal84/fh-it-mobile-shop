@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { categories } from "../../../data/categories";
-import { getProductsByCategory } from "../../../data/products";
 import ProductGrid from "../../../components/products/ProductGrid";
+import { getProductsByCategory } from "../../../lib/products";
 
 export function generateStaticParams() {
   return categories.map(({ slug }) => ({ slug }));
@@ -45,8 +45,7 @@ export default async function CategoryPage({
     notFound();
   }
 
-  const categoryProducts =
-    getProductsByCategory(slug);
+  const categoryProducts = await getProductsByCategory(slug);
 
   return (
     <div className="container-shop py-12">

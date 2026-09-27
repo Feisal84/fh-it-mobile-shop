@@ -42,6 +42,8 @@ function toProduct(product: DatabaseProduct): Product {
 function queryProducts(filters?: {
   featured?: boolean;
   slug?: string;
+  categorySlug?: string;
+  ids?: string[];
 }) {
   let query = supabase
     .from("products")
@@ -59,18 +61,53 @@ function queryProducts(filters?: {
     query = query.eq("slug", filters.slug);
   }
 
+  if (filters?.categorySlug) {
+    query = query.eq("category_slug", filters.categorySlug);
+  }
+
+  if (filters?.ids) {
+    query = query.in("id", filters.ids);
+  }
+
   return query;
 }
 
-export async function getFeaturedProducts(): Promise<Product[]> {
-  const { data, error } = await queryProducts({ featured: true });
+async function fetchProducts(filters?: {
+  featured?: boolean;
+  slug?: string;
+  categorySlug?: string;
+  ids?: string[];
+}): Promise<Product[]> {
+  const { data, error } = await queryProducts(filters);
 
   if (error) {
-    console.error("Fehler beim Laden der empfohlenen Produkte:", error);
+    console.error("Fehler beim Laden der Produkte:", error);
     return [];
   }
 
   return (data as DatabaseProduct[]).map(toProduct);
+}
+
+export async function getProducts(): Promise<Product[]> {
+  return fetchProducts();
+}
+
+export async function getProductsByCategory(
+  categorySlug: string
+): Promise<Product[]> {
+  return fetchProducts({ categorySlug });
+}
+
+export async function getProductsByIds(ids: string[]): Promise<Product[]> {
+  if (ids.length === 0) {
+    return [];
+  }
+
+  return fetchProducts({ ids });
+}
+
+export async function getFeaturedProducts(): Promise<Product[]> {
+  return fetchProducts({ featured: true });
 }
 
 export async function getProductBySlug(

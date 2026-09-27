@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { products } from "../../../data/products";
+import { getProductsByIds } from "../../../lib/products";
 import { getStripe } from "../../../lib/stripe";
 
 const SHIPPING_COST = 4.99;
@@ -19,16 +19,32 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Der Warenkorb ist leer." }, { status: 400 });
     }
 
-    const lineItems = body.items.map((item) => {
+    const items = body.items.map((item) => {
       const quantity = item.quantity;
 
       if (typeof item.productId !== "string" || typeof quantity !== "number" || !Number.isInteger(quantity) || quantity < 1) {
         throw new Error("Ungültiges Produkt im Warenkorb.");
       }
 
-      const product = products.find((entry) => entry.id === item.productId);
+      return { productId: item.productId, quantity };
+    });
+    const products = await getProductsByIds([
+      ...new Set(items.map((item) => item.productId)),
+    ]);
+    const productsById = new Map(products.map((product) => [product.id, product]));
+    const requestedQuantities = new Map<string, number>();
 
-      if (!product || quantity > product.stock) {
+    for (const item of items) {
+      requestedQuantities.set(
+        item.productId,
+        (requestedQuantities.get(item.productId) ?? 0) + item.quantity
+      );
+    }
+
+    const lineItems = items.map((item) => {
+      const product = productsById.get(item.productId);
+
+      if (!product || (requestedQuantities.get(item.productId) ?? 0) > product.stock) {
         throw new Error("Ein Produkt ist nicht mehr in der gewünschten Menge verfügbar.");
       }
 
@@ -38,7 +54,7 @@ export async function POST(request: Request) {
           product_data: { name: product.name, description: product.category },
           unit_amount: Math.round(product.price * 100),
         },
-        quantity,
+        quantity: item.quantity,
       };
     });
 

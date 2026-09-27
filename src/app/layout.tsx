@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { AuthProvider } from "../context/AuthContext";
 import { CartProvider } from "../context/CartContext";
 import { FavoritesProvider } from "../context/FavoritesContext";
 import Header from "../components/layout/Header";
@@ -55,15 +56,17 @@ export default function RootLayout({
   return (
     <html lang="de" data-scroll-behavior="smooth">
       <body>
-        <CartProvider>
-          <FavoritesProvider>
-            <Header />
+        <AuthProvider>
+          <CartProvider>
+            <FavoritesProvider>
+              <Header />
 
-            <main>{children}</main>
+              <main>{children}</main>
 
-            <Footer />
-          </FavoritesProvider>
-        </CartProvider>
+              <Footer />
+            </FavoritesProvider>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
