@@ -1,4 +1,5 @@
 import type { Product } from "../types/product";
+import type { Locale } from "../i18n/config";
 import { supabase } from "./supabase";
 
 type ProductRow = {
@@ -19,12 +20,34 @@ type ProductRow = {
   is_featured?: boolean | null;
   featured?: boolean | null;
   description: string;
+  // Optional translations (fall back to the German base columns)
+  name_en?: string | null;
+  name_ar?: string | null;
+  description_en?: string | null;
+  description_ar?: string | null;
+  category_en?: string | null;
+  category_ar?: string | null;
 };
 
-function mapProduct(row: ProductRow): Product {
+function mapProduct(row: ProductRow, locale: Locale = "de"): Product {
+  const translatedName =
+    locale === "en" ? row.name_en : locale === "ar" ? row.name_ar : null;
+  const translatedDescription =
+    locale === "en"
+      ? row.description_en
+      : locale === "ar"
+        ? row.description_ar
+        : null;
+  const translatedCategory =
+    locale === "en"
+      ? row.category_en
+      : locale === "ar"
+        ? row.category_ar
+        : null;
+
   return {
     id: row.id,
-    name: row.name,
+    name: translatedName || row.name,
     slug: row.slug,
     price: Number(row.price_cents) / 100,
     oldPrice:
@@ -35,7 +58,7 @@ function mapProduct(row: ProductRow): Product {
       row.image ||
       row.image_url ||
       "/images/products/product-placeholder.jpg",
-    category: row.category,
+    category: translatedCategory || row.category,
     categorySlug: row.category_slug,
     condition: row.condition ?? undefined,
     rating:
@@ -45,11 +68,11 @@ function mapProduct(row: ProductRow): Product {
     reviews: Number(row.review_count ?? row.reviews ?? 0),
     stock: Number(row.stock ?? 0),
     featured: Boolean(row.is_featured ?? row.featured),
-    description: row.description,
+    description: translatedDescription || row.description,
   };
 }
 
-export async function getProducts(): Promise<Product[]> {
+export async function getProducts(locale: Locale = "de"): Promise<Product[]> {
   const { data, error } = await supabase
     .from("products")
     .select("*")
@@ -67,7 +90,7 @@ export async function getProducts(): Promise<Product[]> {
     return [];
   }
 
-  return (data ?? []).map(mapProduct);
+  return (data ?? []).map((row) => mapProduct(row, locale));
 }
 
 export async function getProductsByIds(ids: string[]): Promise<Product[]> {
@@ -86,10 +109,11 @@ export async function getProductsByIds(ids: string[]): Promise<Product[]> {
     return [];
   }
 
-  return (data ?? []).map(mapProduct);
+  // Always returns the base (German) data; used by the checkout API route.
+  return (data ?? []).map((row) => mapProduct(row));
 }
 
-export async function getFeaturedProducts(): Promise<Product[]> {
+export async function getFeaturedProducts(locale: Locale = "de"): Promise<Product[]> {
   const { data, error } = await supabase
     .from("products")
     .select("*")
@@ -108,11 +132,12 @@ export async function getFeaturedProducts(): Promise<Product[]> {
     return [];
   }
 
-  return (data ?? []).map(mapProduct);
+  return (data ?? []).map((row) => mapProduct(row, locale));
 }
 
 export async function getProductBySlug(
-  slug: string
+  slug: string,
+  locale: Locale = "de"
 ): Promise<Product | null> {
   const { data, error } = await supabase
     .from("products")
@@ -134,11 +159,12 @@ export async function getProductBySlug(
     return null;
   }
 
-  return mapProduct(data);
+  return mapProduct(data, locale);
 }
 
 export async function getProductsByCategory(
-  categorySlug: string
+  categorySlug: string,
+  locale: Locale = "de"
 ): Promise<Product[]> {
   const { data, error } = await supabase
     .from("products")
@@ -158,5 +184,5 @@ export async function getProductsByCategory(
     return [];
   }
 
-  return (data ?? []).map(mapProduct);
+  return (data ?? []).map((row) => mapProduct(row, locale));
 }

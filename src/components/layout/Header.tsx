@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import {
   Heart,
@@ -12,39 +11,24 @@ import {
   X,
 } from "lucide-react";
 import { useCart } from "../../context/CartContext";
-
-const categories = [
-  {
-    name: "Smartphones",
-    href: "/categories/smartphones",
-  },
-  {
-    name: "IT & Computer",
-    href: "/categories/it-computer",
-  },
-  {
-    name: "Elektronik",
-    href: "/categories/elektronik",
-  },
-  {
-    name: "Handy-Zubehör",
-    href: "/categories/handy-zubehoer",
-  },
-  {
-    name: "Bekleidung",
-    href: "/categories/bekleidung",
-  },
-  {
-    name: "Refurbished",
-    href: "/categories/refurbished",
-  },
-];
+import { useI18n } from "../../context/I18nContext";
+import { formatMessage } from "../../lib/localization";
+import LocaleLink from "../i18n/LocaleLink";
+import LanguageSwitcher from "../i18n/LanguageSwitcher";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
   const { totalItems } = useCart();
+  const { dict, localizePath } = useI18n();
+
+  const categories = Object.entries(dict.categories).map(
+    ([slug, category]) => ({
+      name: category.name,
+      href: `/categories/${slug}`,
+    })
+  );
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -52,23 +36,24 @@ export default function Header() {
       <div className="hidden bg-[#0B1220] text-white md:block">
         <div className="container-shop flex h-9 items-center justify-between text-xs">
           <p>
-            Willkommen bei <span className="font-semibold">FH IT & Mobile Handel</span>
+            {dict.header.welcome}{" "}
+            <span className="font-semibold">FH IT & Mobile Handel</span>
           </p>
 
           <div className="flex items-center gap-5">
-            <Link
+            <LocaleLink
               href="/shipping"
               className="transition hover:text-blue-400"
             >
-              Versand & Lieferung
-            </Link>
+              {dict.header.shipping}
+            </LocaleLink>
 
-            <Link
+            <LocaleLink
               href="/contact"
               className="transition hover:text-blue-400"
             >
-              Kontakt
-            </Link>
+              {dict.header.contact}
+            </LocaleLink>
           </div>
         </div>
       </div>
@@ -81,7 +66,9 @@ export default function Header() {
             <button
               type="button"
               aria-label={
-                mobileMenuOpen ? "Menü schließen" : "Menü öffnen"
+                mobileMenuOpen
+                  ? dict.header.closeMenuAria
+                  : dict.header.openMenuAria
               }
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 md:hidden"
@@ -94,9 +81,9 @@ export default function Header() {
             </button>
 
             {/* LOGO */}
-            <Link
+            <LocaleLink
               href="/"
-              aria-label="FH IT & Mobile Handel Startseite"
+              aria-label={dict.header.logoAria}
               className="flex shrink-0 items-center"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -108,26 +95,26 @@ export default function Header() {
                 priority
                 className="h-auto w-[185px] sm:w-[220px] md:w-[250px]"
               />
-            </Link>
+            </LocaleLink>
 
             {/* DESKTOP SEARCH */}
             <div className="mx-auto hidden w-full max-w-xl lg:block">
               <form
-                action="/shop"
+                action={localizePath("/shop")}
                 method="GET"
                 className="relative"
               >
                 <input
                   type="search"
                   name="search"
-                  placeholder="Was suchst du?"
-                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-4 pr-12 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
+                  placeholder={dict.header.searchPlaceholder}
+                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 ps-4 pe-12 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
                 />
 
                 <button
                   type="submit"
-                  aria-label="Suchen"
-                  className="absolute right-0 top-0 flex h-11 w-12 items-center justify-center rounded-r-xl text-slate-500 hover:text-blue-600"
+                  aria-label={dict.header.searchAria}
+                  className="absolute end-0 top-0 flex h-11 w-12 items-center justify-center rounded-e-xl text-slate-500 hover:text-blue-600"
                 >
                   <Search className="h-5 w-5" />
                 </button>
@@ -135,49 +122,54 @@ export default function Header() {
             </div>
 
             {/* ACTIONS */}
-            <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
+            <div className="ms-auto flex shrink-0 items-center gap-1 sm:gap-2">
               {/* MOBILE SEARCH */}
               <button
                 type="button"
-                aria-label="Suche öffnen"
+                aria-label={dict.header.openSearchAria}
                 onClick={() => setSearchOpen(!searchOpen)}
                 className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 lg:hidden"
               >
                 <Search className="h-5 w-5" />
               </button>
 
+              {/* LANGUAGE SWITCHER */}
+              <LanguageSwitcher />
+
               {/* ACCOUNT */}
-              <Link
+              <LocaleLink
                 href="/account"
-                aria-label="Mein Konto"
+                aria-label={dict.header.accountAria}
                 className="hidden h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 sm:flex"
               >
                 <User className="h-5 w-5" />
-              </Link>
+              </LocaleLink>
 
               {/* FAVORITES */}
-              <Link
+              <LocaleLink
                 href="/favorites"
-                aria-label="Favoriten"
+                aria-label={dict.header.favoritesAria}
                 className="hidden h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 sm:flex"
               >
                 <Heart className="h-5 w-5" />
-              </Link>
+              </LocaleLink>
 
               {/* CART */}
-              <Link
+              <LocaleLink
                 href="/cart"
-                aria-label={`Warenkorb, ${totalItems} Artikel`}
+                aria-label={formatMessage(dict.header.cartAria, {
+                  count: totalItems,
+                })}
                 className="relative flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100"
               >
                 <ShoppingCart className="h-5 w-5" />
 
                 {totalItems > 0 && (
-                  <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-bold text-white">
+                  <span className="absolute -end-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-bold text-white">
                     {totalItems > 99 ? "99+" : totalItems}
                   </span>
                 )}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
 
@@ -185,7 +177,7 @@ export default function Header() {
           {searchOpen && (
             <div className="pb-4 lg:hidden">
               <form
-                action="/shop"
+                action={localizePath("/shop")}
                 method="GET"
                 className="relative"
               >
@@ -193,14 +185,14 @@ export default function Header() {
                   type="search"
                   name="search"
                   autoFocus
-                  placeholder="Produkte suchen..."
-                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-4 pr-12 text-sm outline-none focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
+                  placeholder={dict.header.searchPlaceholderMobile}
+                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 ps-4 pe-12 text-sm outline-none focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
                 />
 
                 <button
                   type="submit"
-                  aria-label="Suchen"
-                  className="absolute right-0 top-0 flex h-11 w-12 items-center justify-center text-slate-500"
+                  aria-label={dict.header.searchAria}
+                  className="absolute end-0 top-0 flex h-11 w-12 items-center justify-center text-slate-500"
                 >
                   <Search className="h-5 w-5" />
                 </button>
@@ -214,29 +206,29 @@ export default function Header() {
       <nav className="hidden border-b border-slate-100 bg-white md:block">
         <div className="container-shop">
           <div className="flex h-12 items-center justify-center gap-7">
-            <Link
+            <LocaleLink
               href="/shop"
               className="text-sm font-semibold text-slate-900 hover:text-blue-600"
             >
-              Shop
-            </Link>
+              {dict.header.shop}
+            </LocaleLink>
 
             {categories.map((category) => (
-              <Link
+              <LocaleLink
                 key={category.href}
                 href={category.href}
                 className="text-sm font-medium text-slate-600 hover:text-blue-600"
               >
                 {category.name}
-              </Link>
+              </LocaleLink>
             ))}
 
-            <Link
+            <LocaleLink
               href="/about"
               className="text-sm font-medium text-slate-600 hover:text-blue-600"
             >
-              Über uns
-            </Link>
+              {dict.header.about}
+            </LocaleLink>
           </div>
         </div>
       </nav>
@@ -246,58 +238,58 @@ export default function Header() {
         <div className="border-b border-slate-200 bg-white md:hidden">
           <div className="container-shop py-4">
             <nav className="flex flex-col">
-              <Link
+              <LocaleLink
                 href="/shop"
                 onClick={() => setMobileMenuOpen(false)}
                 className="border-b border-slate-100 py-3 text-base font-semibold text-slate-900"
               >
-                Shop
-              </Link>
+                {dict.header.shop}
+              </LocaleLink>
 
               {categories.map((category) => (
-                <Link
+                <LocaleLink
                   key={category.href}
                   href={category.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="border-b border-slate-100 py-3 text-base font-medium text-slate-700 hover:text-blue-600"
                 >
                   {category.name}
-                </Link>
+                </LocaleLink>
               ))}
 
-              <Link
+              <LocaleLink
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}
                 className="border-b border-slate-100 py-3 text-base font-medium text-slate-700"
               >
-                Über uns
-              </Link>
+                {dict.header.about}
+              </LocaleLink>
 
-              <Link
+              <LocaleLink
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="border-b border-slate-100 py-3 text-base font-medium text-slate-700"
               >
-                Kontakt
-              </Link>
+                {dict.header.contact}
+              </LocaleLink>
 
-              <Link
+              <LocaleLink
                 href="/account"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-3 py-3 text-base font-medium text-slate-700"
               >
                 <User className="h-5 w-5" />
-                Mein Konto
-              </Link>
+                {dict.header.myAccount}
+              </LocaleLink>
 
-              <Link
+              <LocaleLink
                 href="/favorites"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-3 py-3 text-base font-medium text-slate-700"
               >
                 <Heart className="h-5 w-5" />
-                Favoriten
-              </Link>
+                {dict.header.favoritesAria}
+              </LocaleLink>
             </nav>
           </div>
         </div>

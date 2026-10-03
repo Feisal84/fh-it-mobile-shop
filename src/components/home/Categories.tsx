@@ -10,52 +10,29 @@ import {
   RefreshCw,
 } from "lucide-react";
 
-const categories = [
-  {
-    name: "Smartphones",
-    description: "Apple, Samsung & mehr",
-    href: "/categories/smartphones",
-    image: "/images/categories/smartphones.jpg",
-    icon: Smartphone,
-  },
-  {
-    name: "IT & Computer",
-    description: "Laptops, PCs & Zubehör",
-    href: "/categories/it-computer",
-    image: "/images/categories/it-computer.jpg",
-    icon: Laptop,
-  },
-  {
-    name: "Elektronik",
-    description: "Technik für deinen Alltag",
-    href: "/categories/elektronik",
-    image: "/images/categories/elektronik.jpg",
-    icon: Cpu,
-  },
-  {
-    name: "Handy-Zubehör",
-    description: "Cases, Kabel & mehr",
-    href: "/categories/handy-zubehoer",
-    image: "/images/categories/handy-zubehoer.jpg",
-    icon: Headphones,
-  },
-  {
-    name: "Bekleidung",
-    description: "Mode für jeden Stil",
-    href: "/categories/bekleidung",
-    image: "/images/categories/bekleidung.jpg",
-    icon: Shirt,
-  },
-  {
-    name: "Refurbished",
-    description: "Geprüft & günstiger",
-    href: "/categories/refurbished",
-    image: "/images/categories/refurbished.jpg",
-    icon: RefreshCw,
-  },
-];
+import { categories as categoryData } from "../../data/categories";
+import { getDictionary, getLocale } from "../../i18n/get-dictionary";
 
-export default function Categories() {
+const icons = [Smartphone, Laptop, Cpu, Headphones, Shirt, RefreshCw];
+
+export default async function Categories() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+  const t = dict.home.categories;
+
+  const categories = categoryData.map((category, index) => {
+    const translated =
+      dict.categories[category.slug as keyof typeof dict.categories];
+
+    return {
+      name: translated?.name ?? category.name,
+      description: translated?.short ?? category.description,
+      href: `/${locale}/categories/${category.slug}`,
+      image: category.image,
+      icon: icons[index % icons.length],
+    };
+  });
+
   return (
     <section className="bg-white py-16 sm:py-20">
       <div className="container-shop">
@@ -63,25 +40,24 @@ export default function Categories() {
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="mb-2 text-sm font-bold uppercase tracking-wider text-blue-600">
-              Unsere Kategorien
+              {t.eyebrow}
             </p>
 
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Entdecke unsere Produkte
+              {t.title}
             </h2>
 
             <p className="mt-3 max-w-2xl text-slate-600">
-              Von Smartphones und Computern bis zu Elektronik,
-              Zubehör, Mode und geprüften Refurbished-Produkten.
+              {t.subtitle}
             </p>
           </div>
 
           <Link
-            href="/shop"
+            href={`/${locale}/shop`}
             className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700"
           >
-            Alle Produkte
-            <ArrowRight className="h-4 w-4" />
+            {dict.common.allProducts}
+            <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
           </Link>
         </div>
 
@@ -110,12 +86,12 @@ export default function Categories() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
                   {/* ICON */}
-                  <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-blue-600 shadow-lg backdrop-blur">
+                  <div className="absolute start-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-blue-600 shadow-lg backdrop-blur">
                     <Icon className="h-5 w-5" />
                   </div>
 
                   {/* CONTENT */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                  <div className="absolute bottom-0 start-0 end-0 p-4 sm:p-5">
                     <h3 className="text-lg font-bold text-white sm:text-xl">
                       {category.name}
                     </h3>
@@ -125,8 +101,8 @@ export default function Categories() {
                     </p>
 
                     <div className="mt-3 flex items-center gap-1 text-xs font-semibold text-white">
-                      Entdecken
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                      {t.discover}
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
                     </div>
                   </div>
                 </div>

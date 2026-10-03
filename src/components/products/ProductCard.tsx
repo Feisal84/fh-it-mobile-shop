@@ -1,8 +1,6 @@
-
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   Heart,
   ShoppingCart,
@@ -12,8 +10,14 @@ import {
 
 import { Product } from "../../types/shop";
 import { formatPrice } from "../../lib/utils";
+import {
+  localizedCategoryName,
+  localizedCondition,
+} from "../../lib/localization";
 import { useCart } from "../../context/CartContext";
 import { useFavorites } from "../../context/FavoritesContext";
+import { useI18n } from "../../context/I18nContext";
+import LocaleLink from "../i18n/LocaleLink";
 
 interface ProductCardProps {
   product: Product;
@@ -24,6 +28,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   const { addToCart } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { locale, dict } = useI18n();
 
   const isOnSale =
     typeof product.oldPrice === "number" &&
@@ -51,11 +56,17 @@ export default function ProductCard({
   const isAvailable = stock > 0;
   const favorite = isFavorite(product.id);
 
+  const categoryName = product.categorySlug
+    ? localizedCategoryName(product.categorySlug, dict, product.category)
+    : product.category;
+
+  const conditionLabel = localizedCondition(product.condition, dict);
+
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl">
       {/* IMAGE AREA */}
      <div className="relative aspect-square overflow-hidden bg-slate-100">
-  <Link
+  <LocaleLink
     href={`/product/${product.slug}`}
     className="absolute inset-0"
   >
@@ -66,26 +77,26 @@ export default function ProductCard({
       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
       className="object-cover transition duration-500 group-hover:scale-105"
     />
-  </Link>
+  </LocaleLink>
 
   {isOnSale && (
-    <span className="absolute left-3 top-3 z-10 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow">
+    <span className="absolute start-3 top-3 z-10 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow">
       -{discount}%
     </span>
   )}
 
-  {product.condition && (
-    <span className="absolute bottom-3 left-3 z-10 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-slate-800 shadow backdrop-blur">
-      {product.condition}
+  {conditionLabel && (
+    <span className="absolute bottom-3 start-3 z-10 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-slate-800 shadow backdrop-blur">
+      {conditionLabel}
     </span>
   )}
 
   <button
     type="button"
-    aria-label={`${product.name} ${favorite ? "aus Favoriten entfernen" : "zu Favoriten hinzufügen"}`}
+    aria-label={`${product.name} ${favorite ? dict.product.removeFavoriteAria : dict.product.addFavoriteAria}`}
     aria-pressed={favorite}
     onClick={() => toggleFavorite(product)}
-    className={`absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 shadow-md backdrop-blur transition hover:bg-blue-600 hover:text-white ${
+    className={`absolute end-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 shadow-md backdrop-blur transition hover:bg-blue-600 hover:text-white ${
       favorite ? "text-red-600" : "text-slate-600"
     }`}
   >
@@ -96,18 +107,18 @@ export default function ProductCard({
       {/* CONTENT */}
       <div className="flex flex-1 flex-col p-4">
         {/* CATEGORY */}
-        {product.category && (
+        {categoryName && (
           <p className="mb-1 text-xs font-medium uppercase tracking-wide text-slate-400">
-            {product.category}
+            {categoryName}
           </p>
         )}
 
         {/* PRODUCT NAME */}
-        <Link href={`/product/${product.slug}`}>
+        <LocaleLink href={`/product/${product.slug}`}>
           <h3 className="line-clamp-2 min-h-[48px] text-sm font-bold leading-6 text-slate-900 transition hover:text-blue-600 sm:text-base">
             {product.name}
           </h3>
-        </Link>
+        </LocaleLink>
 
         {/* RATING */}
         <div className="mt-2 flex items-center gap-2">
@@ -133,11 +144,11 @@ export default function ProductCard({
 
         {/* CONDITION / STOCK */}
         <div className="mt-3 flex items-center justify-between gap-2">
-          {product.condition && (
+          {conditionLabel && (
             <span className="text-xs text-slate-500">
-              Zustand:{" "}
+              {dict.product.condition}{" "}
               <span className="font-semibold text-slate-700">
-                {product.condition}
+                {conditionLabel}
               </span>
             </span>
           )}
@@ -145,11 +156,11 @@ export default function ProductCard({
           {isAvailable ? (
             <span className="flex items-center gap-1 text-xs font-semibold text-green-600">
               <Check className="h-3.5 w-3.5" />
-              Auf Lager
+              {dict.product.inStock}
             </span>
           ) : (
             <span className="text-xs font-semibold text-red-600">
-              Nicht verfügbar
+              {dict.product.unavailable}
             </span>
           )}
         </div>
@@ -158,18 +169,18 @@ export default function ProductCard({
         <div className="mt-4">
           <div className="flex items-end gap-2">
             <span className="text-xl font-extrabold text-slate-900 sm:text-2xl">
-              {formatPrice(product.price)}
+              {formatPrice(product.price, locale)}
             </span>
 
             {isOnSale && (
               <span className="mb-0.5 text-sm text-slate-400 line-through">
-                {formatPrice(product.oldPrice!)}
+                {formatPrice(product.oldPrice!, locale)}
               </span>
             )}
           </div>
 
           <p className="mt-1 text-[11px] text-slate-400">
-            inkl. MwSt. zzgl. Versand
+            {dict.product.vatNote}
           </p>
         </div>
 
@@ -183,8 +194,8 @@ export default function ProductCard({
           <ShoppingCart className="h-4 w-4" />
 
           {isAvailable
-            ? "In den Warenkorb"
-            : "Nicht verfügbar"}
+            ? dict.product.addToCart
+            : dict.product.unavailable}
         </button>
       </div>
     </article>

@@ -1,0 +1,388 @@
+{
+  "metadata": {
+    "title": "FH IT & Mobile Handel",
+    "description": "FH IT & Mobile Handel – smartphones, IT, electronics, phone accessories, refurbished products and clothing.",
+    "shopTitle": "Shop | FH IT & Mobile Handel",
+    "shopDescription": "IT, smartphones, electronics, phone accessories, refurbished products and clothing at FH IT & Mobile Handel.",
+    "faqTitle": "FAQ | FH IT & Mobile Handel",
+    "faqDescription": "Frequently asked questions about ordering, shipping and returns at FH IT & Mobile Handel.",
+    "shippingTitle": "Shipping & Delivery | FH IT & Mobile Handel",
+    "shippingDescription": "Information about shipping costs, delivery times and shipping methods at FH IT & Mobile Handel.",
+    "impressumTitle": "Legal Notice | FH IT & Mobile Handel",
+    "impressumDescription": "Legal notice of FH IT & Mobile Handel according to § 5 TMG.",
+    "agbTitle": "Terms & Conditions | FH IT & Mobile Handel",
+    "agbDescription": "General terms and conditions of FH IT & Mobile Handel.",
+    "datenschutzTitle": "Privacy Policy | FH IT & Mobile Handel",
+    "datenschutzDescription": "Privacy policy of FH IT & Mobile Handel.",
+    "widerrufTitle": "Right of Withdrawal | FH IT & Mobile Handel",
+    "widerrufDescription": "Withdrawal policy of FH IT & Mobile Handel."
+  },
+  "common": {
+    "shopName": "FH IT & Mobile Handel",
+    "owner": "Feisal Ibrahim Hussein",
+    "toShop": "Go to shop",
+    "toHome": "Back to homepage",
+    "allProducts": "All products",
+    "contactCta": "Get in touch",
+    "loading": "Loading...",
+    "country": "Germany"
+  },
+  "language": {
+    "label": "Language",
+    "switchLabel": "Choose language"
+  },
+  "header": {
+    "welcome": "Welcome to",
+    "shipping": "Shipping & Delivery",
+    "contact": "Contact",
+    "searchPlaceholder": "What are you looking for?",
+    "searchPlaceholderMobile": "Search products...",
+    "searchAria": "Search",
+    "openSearchAria": "Open search",
+    "openMenuAria": "Open menu",
+    "closeMenuAria": "Close menu",
+    "logoAria": "FH IT & Mobile Handel homepage",
+    "accountAria": "My account",
+    "favoritesAria": "Favorites",
+    "cartAria": "Shopping cart, {count} items",
+    "shop": "Shop",
+    "about": "About us",
+    "myAccount": "My account"
+  },
+  "footer": {
+    "tagline": "Tech, mobile, IT, electronics and clothing – reliable, modern and at fair prices.",
+    "ownerLabel": "Owner:",
+    "shopTitle": "Shop",
+    "serviceTitle": "Service",
+    "contactTitle": "Contact",
+    "aboutUs": "About us",
+    "contact": "Contact",
+    "shipping": "Shipping & Delivery",
+    "returns": "Returns",
+    "impressum": "Legal Notice",
+    "datenschutz": "Privacy Policy",
+    "agb": "Terms & Conditions",
+    "widerruf": "Right of Withdrawal",
+    "customerServiceTitle": "Personal customer service",
+    "customerServiceText": "If you have any questions about products, orders or deliveries, feel free to contact us.",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "badge": "FH IT & Mobile Handel",
+      "title1": "Tech.",
+      "title2": "Mobile.",
+      "title3": "Fashion.",
+      "subtitle": "Discover smartphones, computers, electronics, phone accessories, clothing and high-quality refurbished products at fair prices.",
+      "ctaShop": "Shop now",
+      "ctaRefurbished": "Discover refurbished",
+      "benefitShipping": "Fast shipping",
+      "benefitSecure": "Shop securely",
+      "benefitReturns": "Fair returns",
+      "cardEyebrow": "FH IT & Mobile Handel",
+      "cardTitle": "Tech for your everyday life",
+      "discoverNow": "Discover now",
+      "ourOffers": "Our deals",
+      "imageAlt": "FH IT & Mobile Handel – tech, mobile and fashion"
+    },
+    "trust": {
+      "items": [
+        { "title": "Fast shipping", "text": "We ship your order reliably." },
+        { "title": "Shop securely", "text": "Your order is processed securely." },
+        { "title": "Fair returns", "text": "Clear information about returns and service." },
+        { "title": "Customer service", "text": "We are happy to help with any questions." }
+      ]
+    },
+    "categories": {
+      "eyebrow": "Our categories",
+      "title": "Discover our products",
+      "subtitle": "From smartphones and computers to electronics, accessories, fashion and certified refurbished products.",
+      "discover": "Discover"
+    },
+    "featured": {
+      "eyebrow": "Our recommendations",
+      "title": "Popular products",
+      "subtitle": "Discover selected products from our range.",
+      "emptyTitle": "Products will be available soon.",
+      "emptyText": "We are currently building our product range for you."
+    },
+    "promo": {
+      "eyebrow": "Refurbished & sustainable",
+      "title": "Good tech doesn't always have to be new.",
+      "text": "Discover tested and reconditioned products at attractive prices.",
+      "cta": "Discover refurbished"
+    }
+  },
+  "categories": {
+    "smartphones": {
+      "name": "Smartphones",
+      "short": "Apple, Samsung & more",
+      "description": "Modern smartphones and mobile devices"
+    },
+    "it-computer": {
+      "name": "IT & Computers",
+      "short": "Laptops, PCs & accessories",
+      "description": "Computers, laptops and IT hardware"
+    },
+    "elektronik": {
+      "name": "Electronics",
+      "short": "Tech for your everyday life",
+      "description": "Electronic devices for everyday life and leisure"
+    },
+    "handy-zubehoer": {
+      "name": "Phone Accessories",
+      "short": "Cases, cables & more",
+      "description": "Chargers, cables, cases and more"
+    },
+    "bekleidung": {
+      "name": "Clothing",
+      "short": "Fashion for every style",
+      "description": "Fashion for women, men and children"
+    },
+    "refurbished": {
+      "name": "Refurbished",
+      "short": "Tested & more affordable",
+      "description": "Tested used and refurbished products"
+    }
+  },
+  "conditions": {
+    "Neu": "New",
+    "Refurbished": "Refurbished",
+    "Gebraucht": "Used"
+  },
+  "product": {
+    "condition": "Condition:",
+    "inStock": "In stock",
+    "unavailable": "Not available",
+    "currentlyUnavailable": "Currently unavailable",
+    "addToCart": "Add to cart",
+    "addedToCart": "Added to cart",
+    "vatNote": "incl. VAT, plus shipping",
+    "description": "Description",
+    "ratingText": "{rating} out of 5 stars ({reviews} reviews)",
+    "onlyLeft": "only {count} left",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity",
+    "addFavoriteAria": "add to favorites",
+    "removeFavoriteAria": "remove from favorites",
+    "backToShop": "Back to shop",
+    "shippingTitle": "Fast shipping",
+    "shippingText": "Shipping within Germany",
+    "secureTitle": "Shop securely",
+    "secureText": "Secure payment processing",
+    "searchPlaceholder": "Search products...",
+    "searchAria": "Search products",
+    "categoryAria": "Select category",
+    "allCategories": "All",
+    "productsCount": "{count} products",
+    "removeFromCart": "Remove"
+  },
+  "cart": {
+    "title": "Shopping cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyText": "Discover our products and add something to your cart.",
+    "summary": "Order summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "checkout": "Proceed to checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "backToCart": "Back to cart",
+    "emptyCart": "Your cart is empty.",
+    "address": "Delivery address",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email address",
+    "street": "Street and house number",
+    "postalCode": "Postal code",
+    "city": "City",
+    "securePayment": "Secure payment",
+    "securePaymentText": "Your payment details are processed securely via Stripe.",
+    "payNow": "Pay securely",
+    "redirecting": "Redirecting to Stripe...",
+    "genericError": "An error occurred.",
+    "checkoutError": "Checkout could not be started.",
+    "yourOrder": "Your order",
+    "quantity": "Quantity:",
+    "vatIncluded": "incl. VAT"
+  },
+  "success": {
+    "eyebrow": "Payment successful",
+    "title": "Thank you for your order!",
+    "text": "Your payment has been processed successfully. We are now taking care of your order.",
+    "nextTitle": "What happens next?",
+    "nextText": "You will receive the order and payment information by email. Your order will then be prepared for shipping.",
+    "continueShopping": "Continue shopping"
+  },
+  "favorites": {
+    "eyebrow": "Watchlist",
+    "title": "Favorites",
+    "subtitle": "Products you have saved for later.",
+    "emptyTitle": "No favorites yet",
+    "emptyText": "Save products to your watchlist using the heart icon."
+  },
+  "account": {
+    "eyebrow": "Customer account",
+    "title": "My account",
+    "subtitle": "Sign in or create an account to manage your orders.",
+    "login": "Sign in",
+    "register": "Register",
+    "logout": "Sign out",
+    "loggedInAs": "Signed in as",
+    "loginTitle": "Sign in",
+    "registerTitle": "Register",
+    "emailPlaceholder": "Email address",
+    "passwordPlaceholder": "Password",
+    "passwordHint": "Password (min. 6 characters)",
+    "loggingIn": "Signing in...",
+    "createAccount": "Create account",
+    "registering": "Registering...",
+    "noAccount": "No account yet?",
+    "registerNow": "Register now",
+    "alreadyRegistered": "Already registered?",
+    "loginNow": "Sign in now",
+    "confirmEmail": "Please confirm your email address via the link we sent you."
+  },
+  "shop": {
+    "title": "Our shop",
+    "subtitle": "Discover our selection of smartphones, IT products, electronics, phone accessories, refurbished products and clothing.",
+    "allProducts": "All products",
+    "productCount_one": "{count} product",
+    "productCount_other": "{count} products",
+    "emptyTitle": "No products available at the moment",
+    "emptyText": "There are currently no active products in our range."
+  },
+  "categoryPage": {
+    "eyebrow": "Category"
+  },
+  "pages": {
+    "about": {
+      "eyebrow": "About FH",
+      "p1": "FH IT & Mobile Handel stands for modern technology, mobile products, electronics, accessories and clothing.",
+      "p2": "Our goal is to offer our customers high-quality products at fair prices and reliable service."
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Contact us",
+      "text": "Do you have questions about our products or your order? Write to us.",
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "Email address",
+      "messagePlaceholder": "Your message",
+      "send": "Send message",
+      "directTitle": "Reach us directly"
+    },
+    "faq": {
+      "eyebrow": "Service",
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "question": "Which payment methods do you offer?",
+          "answer": "Payment is processed securely via our payment service provider Stripe with the payment methods shown during checkout."
+        },
+        {
+          "question": "How long does shipping take?",
+          "answer": "Delivery time is usually 2–4 business days after receipt of payment. Details can be found on the Shipping & Delivery page."
+        },
+        {
+          "question": "Can I return an item?",
+          "answer": "Yes, within the scope of our statutory right of withdrawal you can return items within 14 days. Details can be found on the returns page."
+        },
+        {
+          "question": "How can I reach you?",
+          "answer": "Via our contact form, by email at info@fhhandle.de or by phone at +49 1573 0222293."
+        },
+        {
+          "question": "Are the refurbished products tested?",
+          "answer": "Yes, all refurbished products are technically tested before sale and delivered in working condition."
+        }
+      ],
+      "notFound": "Your question wasn't listed? Feel free to contact us directly."
+    },
+    "shipping": {
+      "eyebrow": "Service",
+      "title": "Shipping & Delivery",
+      "intro": "We ship your order reliably and as quickly as possible. Here you will find all important information about shipping costs and delivery times.",
+      "costsTitle": "Shipping costs",
+      "costs": [
+        "Flat shipping rate: €4.99 per order",
+        "Free shipping for orders over €100",
+        "Shipping within Germany only"
+      ],
+      "deliveryTitle": "Delivery time",
+      "deliveryText": "Delivery time is usually 2–4 business days after receipt of payment. As soon as your order has been shipped, you will receive a shipping confirmation by email.",
+      "helpText": "If you have any questions about your delivery, our customer service will be happy to help."
+    },
+    "returns": {
+      "eyebrow": "Service",
+      "title": "Returns",
+      "intro": "Would you like to return an item? Please contact us with your order number before sending anything back.",
+      "howTitle": "How returns work",
+      "steps": [
+        "Write to us with your order number and the reason for the return.",
+        "We will inform you about the next steps for the return shipment.",
+        "After receiving and checking the goods, we will process your return."
+      ],
+      "helpText": "If you have any questions about your order, our customer service will be happy to help."
+    },
+    "impressum": {
+      "eyebrow": "Legal",
+      "title": "Legal Notice",
+      "legalHeading": "Information according to § 5 TMG",
+      "contactHeading": "Contact",
+      "responsibleHeading": "Responsible for content according to § 18 para. 2 MStV",
+      "euHeading": "EU dispute resolution",
+      "euText": "The European Commission provides a platform for online dispute resolution (ODR): https://ec.europa.eu/consumers/odr/. You can find our email address above. We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+    },
+    "agb": {
+      "eyebrow": "Legal",
+      "title": "General Terms and Conditions",
+      "s1heading": "1. Scope",
+      "s1body": "These General Terms and Conditions apply to all orders placed via the online shop of FH IT & Mobile Handel, Feisal Ibrahim Hussein, Siebenbürger Str. 21, 33609 Bielefeld.",
+      "s2heading": "2. Conclusion of contract",
+      "s2body": "The presentation of products in the shop does not constitute a legally binding offer, but an invitation to place an order. By submitting the order, you make a binding offer to purchase. The purchase contract is concluded through our confirmation or the shipment of the goods.",
+      "s3heading": "3. Prices and shipping costs",
+      "s3pre": "All prices include statutory VAT. Any additional shipping costs are shown during the ordering process and on the",
+      "s3link": "Shipping & Delivery",
+      "s3post": "page.",
+      "s4heading": "4. Payment",
+      "s4body": "Payment is made via the payment methods offered during the ordering process, processed by our payment service provider Stripe.",
+      "s5heading": "5. Right of withdrawal",
+      "s5pre": "As a consumer, you have a statutory right of withdrawal. For details, please see our",
+      "s5link": "withdrawal policy",
+      "s6heading": "6. Retention of title",
+      "s6body": "The delivered goods remain our property until payment has been made in full.",
+      "s7heading": "7. Final provisions",
+      "s7body": "The law of the Federal Republic of Germany applies, excluding the UN Convention on Contracts for the International Sale of Goods. Should individual provisions of these terms and conditions be invalid, the validity of the remaining provisions shall remain unaffected."
+    },
+    "datenschutz": {
+      "eyebrow": "Legal",
+      "title": "Privacy Policy",
+      "s1heading": "1. Data controller",
+      "s1pre": "The controller responsible for data processing on this website is:",
+      "s2heading": "2. Hosting and server log files",
+      "s2body": "This website is hosted by an external hosting provider (Vercel Inc.). When you visit the website, information such as IP address, date and time of the request, browser type and operating system is automatically collected in so-called server log files. This data serves to ensure trouble-free operation and the security of our information technology systems (Art. 6 para. 1 lit. f GDPR).",
+      "s3heading": "3. Customer account and orders",
+      "s3body": "When you create a customer account or place an order, we process the data required for this (e.g. name, email address, delivery address, order data) for contract processing (Art. 6 para. 1 lit. b GDPR). Customer accounts are managed via the service provider Supabase.",
+      "s4heading": "4. Payment processing",
+      "s4body": "We use the payment service provider Stripe to process payments. The payment data required for this is transmitted directly to Stripe and processed there in accordance with Stripe's privacy policy (Art. 6 para. 1 lit. b GDPR).",
+      "s5heading": "5. Your rights",
+      "s5body": "You have the right at any time to information, correction, deletion or restriction of the processing of your personal data, as well as a right to data portability and objection. Please contact the contact address above for this purpose. You also have the right to lodge a complaint with a data protection supervisory authority."
+    },
+    "widerruf": {
+      "eyebrow": "Legal",
+      "title": "Withdrawal Policy",
+      "s1heading": "Right of withdrawal",
+      "s1p1": "You have the right to withdraw from this contract within fourteen days without giving any reason. The withdrawal period is fourteen days from the day on which you or a third party named by you, who is not the carrier, took possession of the goods.",
+      "s1pre": "To exercise your right of withdrawal, you must inform us",
+      "s1post": "by means of a clear statement (e.g. a letter sent by post or an email) of your decision to withdraw from this contract.",
+      "s2heading": "Consequences of withdrawal",
+      "s2p1": "If you withdraw from this contract, we must repay all payments we have received from you without delay and at the latest within fourteen days from the day on which we received notification of your withdrawal from this contract. We may withhold repayment until we have received the goods back or until you have provided proof that you have returned the goods, whichever is earlier.",
+      "s2p2": "You must return the goods to us without delay and in any case no later than fourteen days from the day on which you inform us of the withdrawal from this contract. The deadline is met if you send the goods before the period of fourteen days has expired. You bear the direct costs of returning the goods.",
+      "s3heading": "Exclusion of the right of withdrawal",
+      "s3body": "The right of withdrawal does not apply to contracts for the delivery of goods that are not prefabricated and for whose production an individual selection or determination by the consumer is decisive, nor to sealed goods that are not suitable for return for reasons of health protection or hygiene if their seal has been removed after delivery."
+    }
+  }
+}

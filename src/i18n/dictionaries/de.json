@@ -1,0 +1,388 @@
+{
+  "metadata": {
+    "title": "FH IT & Mobile Handel",
+    "description": "FH IT & Mobile Handel – Smartphones, IT, Elektronik, Handy-Zubehör, Refurbished und Bekleidung.",
+    "shopTitle": "Shop | FH IT & Mobile Handel",
+    "shopDescription": "IT, Smartphones, Elektronik, Handy-Zubehör, Refurbished-Produkte und Bekleidung bei FH IT & Mobile Handel.",
+    "faqTitle": "FAQ | FH IT & Mobile Handel",
+    "faqDescription": "Häufig gestellte Fragen zu Bestellung, Versand und Rückgabe bei FH IT & Mobile Handel.",
+    "shippingTitle": "Versand & Lieferung | FH IT & Mobile Handel",
+    "shippingDescription": "Informationen zu Versandkosten, Lieferzeiten und Versandarten bei FH IT & Mobile Handel.",
+    "impressumTitle": "Impressum | FH IT & Mobile Handel",
+    "impressumDescription": "Impressum von FH IT & Mobile Handel gemäß § 5 TMG.",
+    "agbTitle": "AGB | FH IT & Mobile Handel",
+    "agbDescription": "Allgemeine Geschäftsbedingungen von FH IT & Mobile Handel.",
+    "datenschutzTitle": "Datenschutz | FH IT & Mobile Handel",
+    "datenschutzDescription": "Datenschutzerklärung von FH IT & Mobile Handel.",
+    "widerrufTitle": "Widerruf | FH IT & Mobile Handel",
+    "widerrufDescription": "Widerrufsbelehrung von FH IT & Mobile Handel."
+  },
+  "common": {
+    "shopName": "FH IT & Mobile Handel",
+    "owner": "Feisal Ibrahim Hussein",
+    "toShop": "Zum Shop",
+    "toHome": "Zur Startseite",
+    "allProducts": "Alle Produkte",
+    "contactCta": "Kontakt aufnehmen",
+    "loading": "Lädt...",
+    "country": "Deutschland"
+  },
+  "language": {
+    "label": "Sprache",
+    "switchLabel": "Sprache wählen"
+  },
+  "header": {
+    "welcome": "Willkommen bei",
+    "shipping": "Versand & Lieferung",
+    "contact": "Kontakt",
+    "searchPlaceholder": "Was suchst du?",
+    "searchPlaceholderMobile": "Produkte suchen...",
+    "searchAria": "Suchen",
+    "openSearchAria": "Suche öffnen",
+    "openMenuAria": "Menü öffnen",
+    "closeMenuAria": "Menü schließen",
+    "logoAria": "FH IT & Mobile Handel Startseite",
+    "accountAria": "Mein Konto",
+    "favoritesAria": "Favoriten",
+    "cartAria": "Warenkorb, {count} Artikel",
+    "shop": "Shop",
+    "about": "Über uns",
+    "myAccount": "Mein Konto"
+  },
+  "footer": {
+    "tagline": "Technik, Mobile, IT, Elektronik und Bekleidung – zuverlässig, modern und zu fairen Preisen.",
+    "ownerLabel": "Inhaber:",
+    "shopTitle": "Shop",
+    "serviceTitle": "Service",
+    "contactTitle": "Kontakt",
+    "aboutUs": "Über uns",
+    "contact": "Kontakt",
+    "shipping": "Versand & Lieferung",
+    "returns": "Rückgabe",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz",
+    "agb": "AGB",
+    "widerruf": "Widerruf",
+    "customerServiceTitle": "Persönlicher Kundenservice",
+    "customerServiceText": "Bei Fragen zu Produkten, Bestellungen oder Lieferungen kannst du uns gerne kontaktieren.",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "home": {
+    "hero": {
+      "badge": "FH IT & Mobile Handel",
+      "title1": "Technik.",
+      "title2": "Mobile.",
+      "title3": "Mode.",
+      "subtitle": "Entdecke Smartphones, Computer, Elektronik, Handy-Zubehör, Bekleidung und hochwertige Refurbished-Produkte zu fairen Preisen.",
+      "ctaShop": "Jetzt shoppen",
+      "ctaRefurbished": "Refurbished entdecken",
+      "benefitShipping": "Schneller Versand",
+      "benefitSecure": "Sicher einkaufen",
+      "benefitReturns": "Faire Rückgabe",
+      "cardEyebrow": "FH IT & Mobile Handel",
+      "cardTitle": "Technik für deinen Alltag",
+      "discoverNow": "Entdecke jetzt",
+      "ourOffers": "Unsere Angebote",
+      "imageAlt": "FH IT & Mobile Handel – Technik, Mobile und Mode"
+    },
+    "trust": {
+      "items": [
+        { "title": "Schneller Versand", "text": "Wir versenden Ihre Bestellung zuverlässig." },
+        { "title": "Sicher einkaufen", "text": "Ihre Bestellung wird sicher abgewickelt." },
+        { "title": "Faire Rückgabe", "text": "Klare Informationen zu Rückgabe und Service." },
+        { "title": "Kundenservice", "text": "Wir helfen Ihnen bei Fragen gerne weiter." }
+      ]
+    },
+    "categories": {
+      "eyebrow": "Unsere Kategorien",
+      "title": "Entdecke unsere Produkte",
+      "subtitle": "Von Smartphones und Computern bis zu Elektronik, Zubehör, Mode und geprüften Refurbished-Produkten.",
+      "discover": "Entdecken"
+    },
+    "featured": {
+      "eyebrow": "Unsere Empfehlungen",
+      "title": "Beliebte Produkte",
+      "subtitle": "Entdecke ausgewählte Produkte aus unserem Sortiment.",
+      "emptyTitle": "Produkte werden bald verfügbar sein.",
+      "emptyText": "Wir bauen gerade unser Sortiment für dich auf."
+    },
+    "promo": {
+      "eyebrow": "Refurbished & nachhaltig",
+      "title": "Gute Technik muss nicht immer neu sein.",
+      "text": "Entdecke geprüfte und aufbereitete Produkte zu attraktiven Preisen.",
+      "cta": "Refurbished entdecken"
+    }
+  },
+  "categories": {
+    "smartphones": {
+      "name": "Smartphones",
+      "short": "Apple, Samsung & mehr",
+      "description": "Moderne Smartphones und Mobilgeräte"
+    },
+    "it-computer": {
+      "name": "IT & Computer",
+      "short": "Laptops, PCs & Zubehör",
+      "description": "Computer, Laptops und IT-Hardware"
+    },
+    "elektronik": {
+      "name": "Elektronik",
+      "short": "Technik für deinen Alltag",
+      "description": "Elektronische Geräte für Alltag und Freizeit"
+    },
+    "handy-zubehoer": {
+      "name": "Handy-Zubehör",
+      "short": "Cases, Kabel & mehr",
+      "description": "Ladegeräte, Kabel, Cases und mehr"
+    },
+    "bekleidung": {
+      "name": "Bekleidung",
+      "short": "Mode für jeden Stil",
+      "description": "Mode für Damen, Herren und Kinder"
+    },
+    "refurbished": {
+      "name": "Refurbished",
+      "short": "Geprüft & günstiger",
+      "description": "Geprüfte gebrauchte und refurbished Produkte"
+    }
+  },
+  "conditions": {
+    "Neu": "Neu",
+    "Refurbished": "Refurbished",
+    "Gebraucht": "Gebraucht"
+  },
+  "product": {
+    "condition": "Zustand:",
+    "inStock": "Auf Lager",
+    "unavailable": "Nicht verfügbar",
+    "currentlyUnavailable": "Derzeit nicht verfügbar",
+    "addToCart": "In den Warenkorb",
+    "addedToCart": "Zum Warenkorb hinzugefügt",
+    "vatNote": "inkl. MwSt. zzgl. Versand",
+    "description": "Beschreibung",
+    "ratingText": "{rating} von 5 Sternen ({reviews} Bewertungen)",
+    "onlyLeft": "nur noch {count} verfügbar",
+    "decreaseQuantity": "Menge verringern",
+    "increaseQuantity": "Menge erhöhen",
+    "addFavoriteAria": "zu Favoriten hinzufügen",
+    "removeFavoriteAria": "aus Favoriten entfernen",
+    "backToShop": "Zurück zum Shop",
+    "shippingTitle": "Schneller Versand",
+    "shippingText": "Versand innerhalb Deutschlands",
+    "secureTitle": "Sicher einkaufen",
+    "secureText": "Sichere Zahlungsabwicklung",
+    "searchPlaceholder": "Produkte suchen...",
+    "searchAria": "Produkte suchen",
+    "categoryAria": "Kategorie auswählen",
+    "allCategories": "Alle",
+    "productsCount": "{count} Produkte",
+    "removeFromCart": "Entfernen"
+  },
+  "cart": {
+    "title": "Warenkorb",
+    "emptyTitle": "Dein Warenkorb ist leer",
+    "emptyText": "Entdecke unsere Produkte und füge etwas zu deinem Warenkorb hinzu.",
+    "summary": "Bestellübersicht",
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "free": "Kostenlos",
+    "total": "Gesamt",
+    "checkout": "Zur Kasse"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "backToCart": "Zurück zum Warenkorb",
+    "emptyCart": "Dein Warenkorb ist leer.",
+    "address": "Lieferadresse",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail-Adresse",
+    "street": "Straße und Hausnummer",
+    "postalCode": "PLZ",
+    "city": "Ort",
+    "securePayment": "Sichere Zahlung",
+    "securePaymentText": "Deine Zahlungsdaten werden sicher über Stripe verarbeitet.",
+    "payNow": "Sicher bezahlen",
+    "redirecting": "Weiter zu Stripe...",
+    "genericError": "Ein Fehler ist aufgetreten.",
+    "checkoutError": "Checkout konnte nicht gestartet werden.",
+    "yourOrder": "Deine Bestellung",
+    "quantity": "Menge:",
+    "vatIncluded": "inkl. MwSt."
+  },
+  "success": {
+    "eyebrow": "Zahlung erfolgreich",
+    "title": "Vielen Dank für deine Bestellung!",
+    "text": "Deine Zahlung wurde erfolgreich verarbeitet. Wir kümmern uns jetzt um deine Bestellung.",
+    "nextTitle": "Was passiert als Nächstes?",
+    "nextText": "Du erhältst die Bestell- und Zahlungsinformationen per E-Mail. Anschließend wird deine Bestellung für den Versand vorbereitet.",
+    "continueShopping": "Weiter einkaufen"
+  },
+  "favorites": {
+    "eyebrow": "Merkliste",
+    "title": "Favoriten",
+    "subtitle": "Produkte, die Sie für später gespeichert haben.",
+    "emptyTitle": "Noch keine Favoriten",
+    "emptyText": "Speichern Sie Produkte mit dem Herz-Symbol auf Ihrer Merkliste."
+  },
+  "account": {
+    "eyebrow": "Kundenkonto",
+    "title": "Mein Konto",
+    "subtitle": "Melden Sie sich an oder erstellen Sie ein Konto, um Ihre Bestellungen zu verwalten.",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden",
+    "loggedInAs": "Angemeldet als",
+    "loginTitle": "Anmelden",
+    "registerTitle": "Registrieren",
+    "emailPlaceholder": "E-Mail-Adresse",
+    "passwordPlaceholder": "Passwort",
+    "passwordHint": "Passwort (mind. 6 Zeichen)",
+    "loggingIn": "Anmelden...",
+    "createAccount": "Konto erstellen",
+    "registering": "Registrieren...",
+    "noAccount": "Noch kein Konto?",
+    "registerNow": "Jetzt registrieren",
+    "alreadyRegistered": "Bereits registriert?",
+    "loginNow": "Jetzt anmelden",
+    "confirmEmail": "Bitte bestätigen Sie Ihre E-Mail-Adresse über den Link, den wir Ihnen zugeschickt haben."
+  },
+  "shop": {
+    "title": "Unser Shop",
+    "subtitle": "Entdecke unsere Auswahl an Smartphones, IT-Produkten, Elektronik, Handy-Zubehör, Refurbished-Produkten und Bekleidung.",
+    "allProducts": "Alle Produkte",
+    "productCount_one": "{count} Produkt",
+    "productCount_other": "{count} Produkte",
+    "emptyTitle": "Aktuell keine Produkte verfügbar",
+    "emptyText": "Zurzeit sind keine aktiven Produkte in unserem Sortiment vorhanden."
+  },
+  "categoryPage": {
+    "eyebrow": "Kategorie"
+  },
+  "pages": {
+    "about": {
+      "eyebrow": "Über FH",
+      "p1": "FH IT & Mobile Handel steht für moderne Technik, mobile Produkte, Elektronik, Zubehör und Bekleidung.",
+      "p2": "Unser Ziel ist es, unseren Kunden hochwertige Produkte zu fairen Preisen und einen zuverlässigen Service anzubieten."
+    },
+    "contact": {
+      "eyebrow": "Kontakt",
+      "title": "Kontaktieren Sie uns",
+      "text": "Haben Sie Fragen zu unseren Produkten oder Ihrer Bestellung? Schreiben Sie uns.",
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "messagePlaceholder": "Ihre Nachricht",
+      "send": "Nachricht senden",
+      "directTitle": "Direkt erreichen"
+    },
+    "faq": {
+      "eyebrow": "Service",
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Welche Zahlungsmethoden bietet ihr an?",
+          "answer": "Die Bezahlung erfolgt sicher über unseren Zahlungsdienstleister Stripe mit den im Bestellprozess angezeigten Zahlungsarten."
+        },
+        {
+          "question": "Wie lange dauert der Versand?",
+          "answer": "Die Lieferzeit beträgt in der Regel 2–4 Werktage nach Zahlungseingang. Details finden Sie auf der Seite Versand & Lieferung."
+        },
+        {
+          "question": "Kann ich einen Artikel zurückgeben?",
+          "answer": "Ja, im Rahmen unseres gesetzlichen Widerrufsrechts können Sie Artikel innerhalb von 14 Tagen zurücksenden. Details finden Sie auf der Rückgabe-Seite."
+        },
+        {
+          "question": "Wie kann ich euch erreichen?",
+          "answer": "Über unser Kontaktformular, per E-Mail an info@fhhandle.de oder telefonisch unter +49 1573 0222293."
+        },
+        {
+          "question": "Sind die Refurbished-Produkte geprüft?",
+          "answer": "Ja, alle Refurbished-Produkte werden vor dem Verkauf technisch geprüft und funktionstüchtig ausgeliefert."
+        }
+      ],
+      "notFound": "Ihre Frage war nicht dabei? Kontaktieren Sie uns gerne direkt."
+    },
+    "shipping": {
+      "eyebrow": "Service",
+      "title": "Versand & Lieferung",
+      "intro": "Wir versenden Ihre Bestellung zuverlässig und so schnell wie möglich. Hier finden Sie alle wichtigen Informationen zu Versandkosten und Lieferzeiten.",
+      "costsTitle": "Versandkosten",
+      "costs": [
+        "Versandkostenpauschale: 4,99 € pro Bestellung",
+        "Kostenloser Versand ab einem Bestellwert von 100 €",
+        "Versand ausschließlich innerhalb Deutschlands"
+      ],
+      "deliveryTitle": "Lieferzeit",
+      "deliveryText": "Die Lieferzeit beträgt in der Regel 2–4 Werktage nach Zahlungseingang. Sobald Ihre Bestellung versendet wurde, erhalten Sie eine Versandbestätigung per E-Mail.",
+      "helpText": "Bei Fragen zu Ihrer Lieferung hilft Ihnen unser Kundenservice gerne weiter."
+    },
+    "returns": {
+      "eyebrow": "Service",
+      "title": "Rückgabe",
+      "intro": "Sie möchten einen Artikel zurückgeben? Kontaktieren Sie uns bitte vor der Rücksendung mit Ihrer Bestellnummer.",
+      "howTitle": "So funktioniert die Rückgabe",
+      "steps": [
+        "Schreiben Sie uns mit Ihrer Bestellnummer und dem Rückgabegrund.",
+        "Wir informieren Sie über die nächsten Schritte zur Rücksendung.",
+        "Nach Eingang und Prüfung der Ware bearbeiten wir Ihre Rückgabe."
+      ],
+      "helpText": "Bei Fragen zu Ihrer Bestellung hilft Ihnen unser Kundenservice gerne weiter."
+    },
+    "impressum": {
+      "eyebrow": "Rechtliches",
+      "title": "Impressum",
+      "legalHeading": "Angaben gemäß § 5 TMG",
+      "contactHeading": "Kontakt",
+      "responsibleHeading": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+      "euHeading": "EU-Streitschlichtung",
+      "euText": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Unsere E-Mail-Adresse finden Sie oben. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+    },
+    "agb": {
+      "eyebrow": "Rechtliches",
+      "title": "Allgemeine Geschäftsbedingungen",
+      "s1heading": "1. Geltungsbereich",
+      "s1body": "Diese Allgemeinen Geschäftsbedingungen gelten für alle Bestellungen, die Sie über den Onlineshop von FH IT & Mobile Handel, Feisal Ibrahim Hussein, Siebenbürger Str. 21, 33609 Bielefeld, tätigen.",
+      "s2heading": "2. Vertragsschluss",
+      "s2body": "Die Darstellung der Produkte im Shop stellt kein rechtlich bindendes Angebot dar, sondern eine Aufforderung zur Bestellung. Mit dem Absenden der Bestellung geben Sie ein verbindliches Angebot zum Kauf ab. Der Kaufvertrag kommt durch unsere Bestätigung bzw. den Versand der Ware zustande.",
+      "s3heading": "3. Preise und Versandkosten",
+      "s3pre": "Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer. Zusätzlich anfallende Versandkosten werden im Bestellprozess sowie auf der Seite",
+      "s3link": "Versand & Lieferung",
+      "s3post": "ausgewiesen.",
+      "s4heading": "4. Zahlung",
+      "s4body": "Die Zahlung erfolgt über die im Bestellprozess angebotenen Zahlungsarten, abgewickelt über unseren Zahlungsdienstleister Stripe.",
+      "s5heading": "5. Widerrufsrecht",
+      "s5pre": "Als Verbraucher steht Ihnen ein gesetzliches Widerrufsrecht zu. Einzelheiten entnehmen Sie bitte unserer",
+      "s5link": "Widerrufsbelehrung",
+      "s6heading": "6. Eigentumsvorbehalt",
+      "s6body": "Die gelieferte Ware bleibt bis zur vollständigen Bezahlung unser Eigentum.",
+      "s7heading": "7. Schlussbestimmungen",
+      "s7body": "Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt."
+    },
+    "datenschutz": {
+      "eyebrow": "Rechtliches",
+      "title": "Datenschutzerklärung",
+      "s1heading": "1. Verantwortlicher",
+      "s1pre": "Verantwortlich für die Datenverarbeitung auf dieser Website ist:",
+      "s2heading": "2. Hosting und Server-Logfiles",
+      "s2body": "Diese Website wird bei einem externen Hosting-Anbieter (Vercel Inc.) gehostet. Beim Aufruf der Website werden automatisch Informationen wie IP-Adresse, Datum und Uhrzeit der Anfrage, Browsertyp und Betriebssystem in sogenannten Server-Logfiles erfasst. Diese Daten dienen der Sicherstellung eines störungsfreien Betriebs und der Sicherheit unserer informationstechnischen Systeme (Art. 6 Abs. 1 lit. f DSGVO).",
+      "s3heading": "3. Kundenkonto und Bestellungen",
+      "s3body": "Wenn Sie ein Kundenkonto anlegen oder eine Bestellung aufgeben, verarbeiten wir die dafür notwendigen Daten (z. B. Name, E-Mail-Adresse, Lieferadresse, Bestelldaten) zur Vertragsabwicklung (Art. 6 Abs. 1 lit. b DSGVO). Die Verwaltung von Kundenkonten erfolgt über den Dienstleister Supabase.",
+      "s4heading": "4. Zahlungsabwicklung",
+      "s4body": "Zur Abwicklung von Zahlungen setzen wir den Zahlungsdienstleister Stripe ein. Die dafür erforderlichen Zahlungsdaten werden direkt an Stripe übermittelt und dort gemäß den Datenschutzbestimmungen von Stripe verarbeitet (Art. 6 Abs. 1 lit. b DSGVO).",
+      "s5heading": "5. Ihre Rechte",
+      "s5body": "Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Recht auf Datenübertragbarkeit und Widerspruch. Wenden Sie sich hierzu an die oben genannte Kontaktadresse. Ihnen steht zudem ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu."
+    },
+    "widerruf": {
+      "eyebrow": "Rechtliches",
+      "title": "Widerrufsbelehrung",
+      "s1heading": "Widerrufsrecht",
+      "s1p1": "Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.",
+      "s1pre": "Um Ihr Widerrufsrecht auszuüben, müssen Sie uns",
+      "s1post": "mittels einer eindeutigen Erklärung (z. B. per Post versandter Brief oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.",
+      "s2heading": "Folgen des Widerrufs",
+      "s2p1": "Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Wir können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist.",
+      "s2p2": "Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns zurückzusenden. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden. Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.",
+      "s3heading": "Ausschluss des Widerrufsrechts",
+      "s3body": "Das Widerrufsrecht besteht nicht bei Verträgen zur Lieferung von Waren, die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist, sowie bei versiegelter Ware, die aus Gründen des Gesundheitsschutzes oder der Hygiene nicht zur Rückgabe geeignet ist, wenn ihre Versiegelung nach der Lieferung entfernt wurde."
+    }
+  }
+}

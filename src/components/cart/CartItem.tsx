@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Minus, Plus, Trash2 } from "lucide-react";
 
 import type { CartItem as CartItemType } from "../../context/CartContext";
 import { useCart } from "../../context/CartContext";
+import { useI18n } from "../../context/I18nContext";
 import { formatPrice } from "../../lib/utils";
+import LocaleLink from "../i18n/LocaleLink";
 
 export default function CartItem({
   item,
@@ -17,29 +18,31 @@ export default function CartItem({
     updateQuantity,
     removeFromCart,
   } = useCart();
+  const { locale, dict } = useI18n();
 
   return (
     <div className="flex gap-5 border-b py-6">
 
-      <Link href={`/product/${item.product.slug}`} className="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg bg-gray-100">
+      <LocaleLink href={`/product/${item.product.slug}`} className="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg bg-gray-100">
         <Image src={item.product.image} alt={item.product.name} fill sizes="112px" className="object-cover" />
-      </Link>
+      </LocaleLink>
 
       <div className="flex flex-1 flex-col justify-between">
 
         <div className="flex justify-between gap-4">
           <div>
-            <Link href={`/product/${item.product.slug}`} className="font-bold hover:text-blue-600">
+            <LocaleLink href={`/product/${item.product.slug}`} className="font-bold hover:text-blue-600">
               {item.product.name}
-            </Link>
+            </LocaleLink>
 
             <p className="mt-1 text-sm text-gray-500">
-              {formatPrice(item.product.price)}
+              {formatPrice(item.product.price, locale)}
             </p>
           </div>
 
           <button
             type="button"
+            aria-label={dict.product.removeFromCart}
             onClick={() =>
               removeFromCart(item.product.id)
             }
@@ -54,6 +57,7 @@ export default function CartItem({
           <div className="flex items-center rounded-lg border">
             <button
               type="button"
+              aria-label={dict.product.decreaseQuantity}
               onClick={() =>
                 updateQuantity(
                   item.product.id,
@@ -71,6 +75,7 @@ export default function CartItem({
 
             <button
               type="button"
+              aria-label={dict.product.increaseQuantity}
               onClick={() =>
                 updateQuantity(
                   item.product.id,
@@ -86,7 +91,8 @@ export default function CartItem({
 
           <div className="font-bold">
             {formatPrice(
-              item.product.price * item.quantity
+              item.product.price * item.quantity,
+              locale
             )}
           </div>
 

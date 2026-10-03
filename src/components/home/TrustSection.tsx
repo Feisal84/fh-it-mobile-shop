@@ -5,30 +5,17 @@ import {
   RotateCcw,
 } from "lucide-react";
 
-const benefits = [
-  {
-    icon: Truck,
-    title: "Schneller Versand",
-    text: "Wir versenden Ihre Bestellung zuverlässig.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Sicher einkaufen",
-    text: "Ihre Bestellung wird sicher abgewickelt.",
-  },
-  {
-    icon: RotateCcw,
-    title: "Faire Rückgabe",
-    text: "Klare Informationen zu Rückgabe und Service.",
-  },
-  {
-    icon: Headphones,
-    title: "Kundenservice",
-    text: "Wir helfen Ihnen bei Fragen gerne weiter.",
-  },
-];
+import { getDictionary } from "../../i18n/get-dictionary";
 
-export default function TrustSection() {
+const icons = [Truck, ShieldCheck, RotateCcw, Headphones];
+
+export default async function TrustSection() {
+  const dict = await getDictionary();
+  const benefits = dict.home.trust.items.map((benefit, index) => ({
+    ...benefit,
+    icon: icons[index % icons.length],
+  }));
+
   return (
     <section className="border-y bg-white py-14">
       <div className="container-shop">
