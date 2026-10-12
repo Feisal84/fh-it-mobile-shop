@@ -15,6 +15,8 @@ export interface CartItem {
 }
 
 const CART_STORAGE_KEY = "fh-cart";
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const EMPTY_CART: CartItem[] = [];
 let cachedCart = EMPTY_CART;
 let cachedCartValue: string | null = null;
@@ -34,7 +36,14 @@ function getStoredCart(): CartItem[] {
 
   try {
     const parsedCart: unknown = storedCart ? JSON.parse(storedCart) : EMPTY_CART;
-    cachedCart = Array.isArray(parsedCart) ? parsedCart : EMPTY_CART;
+    // Drop legacy items from the old static catalog (non-UUID ids like "fh-001")
+    cachedCart = Array.isArray(parsedCart)
+      ? parsedCart.filter(
+          (item) =>
+            typeof item?.product?.id === "string" &&
+            UUID_PATTERN.test(item.product.id)
+        )
+      : EMPTY_CART;
   } catch (error) {
     console.error("Warenkorb konnte nicht geladen werden:", error);
     cachedCart = EMPTY_CART;

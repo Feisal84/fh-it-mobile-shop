@@ -94,7 +94,12 @@ export async function getProducts(locale: Locale = "de"): Promise<Product[]> {
 }
 
 export async function getProductsByIds(ids: string[]): Promise<Product[]> {
-  if (ids.length === 0) {
+  // Non-UUID ids can't exist in the DB and would make Postgres error (22P02)
+  const validIds = ids.filter((id) =>
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)
+  );
+
+  if (validIds.length === 0) {
     return [];
   }
 
@@ -102,7 +107,7 @@ export async function getProductsByIds(ids: string[]): Promise<Product[]> {
     .from("products")
     .select("*")
     .eq("is_active", true)
-    .in("id", ids);
+    .in("id", validIds);
 
   if (error) {
     console.error("Fehler beim Laden der Produkte nach IDs:", error);
